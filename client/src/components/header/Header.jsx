@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const Header = () => {
-    return <StyledHeader>BockWurst</StyledHeader>;
+const Header = ({header}) => {
+    return <StyledHeader>{header}</StyledHeader>;
   };
   
   const StyledHeader = styled.h1`
