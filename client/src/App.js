@@ -2,6 +2,7 @@ import './App.css';
 import EventCard from './components/eventCard/EventCard';
 import Header from './components/header/Header';
 import styled from 'styled-components';
+import Create from './pages/Create';
 
 const eventsList = [
   {
@@ -32,6 +33,7 @@ function App() {
   return (
     <div className="App">
       <Header header="BockWurst"/>
+      <Create />
       <InitialEventsList role="list">
         {eventsList.map(event => (
           <EventCard
