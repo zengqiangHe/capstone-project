@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header header="BockWurst"/>
+      <Header />
       <InitialEventsList role="list">
         {eventsList.map(event => (
           <EventCard
