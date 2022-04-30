@@ -1,22 +1,25 @@
-import React from 'react';
+import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
-export default function Create({addNewEvent}) {
-  const [title, setTitle] = useState('');
-  const [text, setText] = useState('');
-  const [location, setLocation] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+export default function EditEventPage({events, updateEvent}) {
+  const { id } = useParams()
+  const event = events.find(event => event.id === id)
+  const [title, setTitle] = useState(event.title);
+  const [text, setText] = useState(event.text);
+  const [location, setLocation] = useState(event.location);
+  const [date, setDate] = useState(event.date);
+  const [time, setTime] = useState(event.time);
 
   const handleSubmit = e => {
     e.preventDefault();
     // console.log(titel, description, location, date, time);
-    addNewEvent({title, text, date, time, location})
+    updateEvent({title, text, date, time, location, id})
   };
   return (
     <FormWrapper>
-      <h2>Abstimmung erstellen</h2>
+      <h2>Bearbeiten</h2>
       <form onSubmit={handleSubmit}>
         <Label>
           <Span>Titel:</Span>
