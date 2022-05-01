@@ -20,13 +20,12 @@ const Wrapper = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 15rem;
+  height: 25rem;
   gap: 1rem;
   background-color: black;
   border-radius: 20px;
-  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05);
-  padding: 1.5rem;
-  margin: 0.2rem 0;
+  padding: 17px;
+  margin:1rem;
   &:hover {
     background-color: blue;
   }

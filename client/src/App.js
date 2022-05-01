@@ -49,7 +49,7 @@ function App() {
 
   const updateEvent = data => {
     const eventToUpdate = eventsList.findIndex(event => event.id === data.id);
-    // eventsList.splice(eventToUpdate, 1, data);
+    eventsList.splice(eventToUpdate, 1, data);
     setEventsList(prevEventsList=>{
       return [...prevEventsList.splice(eventToUpdate, 1, data)]});
     navigate(-1);

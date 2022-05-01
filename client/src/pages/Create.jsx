@@ -53,19 +53,20 @@ export default function Create({addNewEvent}) {
   );
 }
 const FormWrapper = styled.div`
-  margin: 60 auto;
- max-width:480px;
- diplay:block;
- color:darkgreen;
+  display:block;
+  color:black;
+  margin:30px;
+  height:100vh;
  
 `;
 const Label =styled.p`
-color:red;
-display:block;
-margin:30px 0 10px;
+color:black;
+display:flex;
+justify-content:center;
+margin:50px 0 10px;
 `
 const Span =styled.p`
-display:block;
+display:flex;
 margin:30px 0 10px;
 `
 const Button = styled.button`
@@ -75,7 +76,7 @@ font-size:1em;
 color:#fff;
 padding: 8px 20px;
 border:0;
-border-radius:4px;
+border-radius:20px;
 background-color:green;
 cursor: pointer;
 text-decoration:none;
