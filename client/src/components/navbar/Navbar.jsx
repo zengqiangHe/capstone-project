@@ -29,6 +29,7 @@ const Navbar = () => {
     bottom: 0;
     padding: 20px;
     width: 100%;
+    border-radius:20px;
   `;
   const StyledNavLink = styled(NavLink)`
   cursor: default;
