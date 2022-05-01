@@ -38,22 +38,20 @@ const defaultEventsList = [
 
 function App() {
   const navigate = useNavigate();
-  const [eventsList, setEventsList] = useState(defaultEventsList);
-  const addNewEvent = event => {
-    event.id = Math.random().toString();
-    setEventsList(prevEventsList=>{
-      return [event, ...prevEventsList]
-    });
-    navigate('/');
-  };
+const[eventsList, setEventsList] = useState (defaultEventsList)
+  const addNewEvent = (event) => {
+    event.id = Math.random().toString()
+    setEventsList([event, ...eventsList])
+    navigate('/')
+  }
+  
 
-  const updateEvent = data => {
+  const updateEvent = (data) => {
     const eventToUpdate = eventsList.findIndex(event => event.id === data.id);
-    eventsList.splice(eventToUpdate, 1, data);
-    setEventsList(prevEventsList=>{
-      return [...prevEventsList.splice(eventToUpdate, 1, data)]});
-    navigate(-1);
-  };
+    eventsList.splice(eventToUpdate, 1, data)
+    setEventsList([ ...eventsList])
+    navigate(-1)
+  }
 
   function deleteEvent(id) {
     setEventsList(eventsList.filter(event => event.id !== id));
