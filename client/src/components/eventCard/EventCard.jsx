@@ -1,21 +1,41 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import edit_icon from "../../assets/edit_icon.png";
-import delete_icon from "../../assets/delete_icon.png";
-
+import edit_icon from '../../assets/edit_icon.png';
+import delete_icon from '../../assets/delete_icon.png';
+import location_icon from '../../assets/location_icon.png';
+import clock_icon from '../../assets/clock_icon.png';
+import calendar_icon from '../../assets/calendar_icon.png';
 
 const EventCard = ({ title, text, date, time, location, showEditButton, id, deleteEvent }) => {
   return (
     <Wrapper>
-      
-      {showEditButton && <Link to={`/edit/${id}`}><button type="button"><img src={edit_icon} alt="edit icon" width="30" /></button></Link>}
-      {showEditButton && <button type="button" onClick={()=>{deleteEvent(id)}}><img src={delete_icon} alt="delete icon" width="30" /></button>}
+      <EditIcons>
+        {' '}
+        {showEditButton && (
+          <Link to={`/edit/${id}`}>
+            <button type="button">
+              <img src={edit_icon} alt="edit icon" width="25" />
+            </button>
+          </Link>
+        )}
+        {showEditButton && (
+          <button
+            type="button"
+            onClick={() => {
+              deleteEvent(id);
+            }}
+          >
+            <img src={delete_icon} alt="delete icon" width="25" />
+          </button>
+        )}
+      </EditIcons>
+
       <h2>{title}</h2>
       <p>{text}</p>
-      <p>{date}</p>
-      <p>{time}</p>
-      <p>{location}</p>
-
+      
+      <p><img src={calendar_icon} alt="calendar icon" width="15" />{date}</p>
+      <p><img src={clock_icon} alt="time icon" width="15" />{time}</p>
+      <p><img src={location_icon} alt="location icon" width="15" />{location}</p>
     </Wrapper>
   );
 };
@@ -24,15 +44,26 @@ const Wrapper = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 25rem;
+  height: 22rem;
   gap: 1rem;
   background-color: black;
   border-radius: 20px;
   padding: 17px;
-  margin:1rem;
+  margin: 0.5rem;
   &:hover {
     background-color: blue;
   }
 `;
 
+const EditIcons = styled.div`
+  display: flex;
+  justify-content: end;
+  gap:15px;
+  align-items: center;
+  button {
+    user-select: none;
+    border: none;
+    background: none;
+  }
+`;
 export default EventCard;
