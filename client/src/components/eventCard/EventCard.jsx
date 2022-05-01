@@ -5,8 +5,8 @@ const EventCard = ({ title, text, date, time, location, showEditButton, id, dele
   return (
     <Wrapper>
       <h2>{title}</h2>
-      {showEditButton && <Link to={`/edit/${id}`}><button>Edit</button></Link>}
-      {showEditButton && <button onClick={()=>{deleteEvent(id)}}>Delete</button>}
+      {showEditButton && <Link to={`/edit/${id}`}><button type="button">Edit</button></Link>}
+      {showEditButton && <button type="button" onClick={()=>{deleteEvent(id)}}>Delete</button>}
       <p>{text}</p>
       <p>{date}</p>
       <p>{time}</p>

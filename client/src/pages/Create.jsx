@@ -11,7 +11,6 @@ export default function Create({addNewEvent}) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(titel, description, location, date, time);
     addNewEvent({title, text, date, time, location})
   };
   return (
@@ -19,12 +18,12 @@ export default function Create({addNewEvent}) {
       <h2>Abstimmung erstellen</h2>
       <form onSubmit={handleSubmit}>
         <Label>
-          <Span>Titel:</Span>
+          <span>Titel:</span>
           <input type="text" onChange={e => setTitle(e.target.value)} value={title} required />
         </Label>
 
         <Label>
-          <Span>Beschreibung:</Span>
+          <span>Beschreibung:</span>
           <textarea onChange={e => setText(e.target.value)} value={text} required />
         </Label>
 
@@ -48,7 +47,7 @@ export default function Create({addNewEvent}) {
           <input type="time" onChange={e => setTime(e.target.value)} value={time} required />
         </Label>
 
-        <Button>Erstellen</Button>
+        <Button type="submit">Erstellen</Button>
       </form>
     </FormWrapper>
   );
