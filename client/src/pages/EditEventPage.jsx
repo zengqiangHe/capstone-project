@@ -1,21 +1,20 @@
-import React from 'react'
+import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
-export default function EditEventPage({events, updateEvent}) {
-  const { id } = useParams()
-  const event = events.find(event => event.id === id)
+export default function EditEventPage({ events, updateEvent }) {
+  const { id } = useParams();
+  const event = events.find(event => event.id === id);
   const [title, setTitle] = useState(event.title);
   const [text, setText] = useState(event.text);
   const [location, setLocation] = useState(event.location);
   const [date, setDate] = useState(event.date);
   const [time, setTime] = useState(event.time);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    // console.log(titel, description, location, date, time);
-    updateEvent({title, text, date, time, location, id})
+  const handleSubmit = event => {
+    event.preventDefault();
+    updateEvent({ title, text, date, time, location, id });
   };
   return (
     <FormWrapper>
@@ -58,30 +57,29 @@ export default function EditEventPage({events, updateEvent}) {
 }
 const FormWrapper = styled.div`
   margin: 60 auto;
- max-width:480px;
- diplay:block;
- color:darkgreen;
- 
+  max-width: 480px;
+  diplay: block;
+  color: darkgreen;
 `;
-const Label =styled.p`
-color:red;
-display:block;
-margin:30px 0 10px;
-`
-const Span =styled.p`
-display:block;
-margin:30px 0 10px;
-`
+const Label = styled.p`
+  color: red;
+  display: block;
+  margin: 30px 0 10px;
+`;
+const Span = styled.p`
+  display: block;
+  margin: 30px 0 10px;
+`;
 const Button = styled.button`
-display:block;
-width:100px;
-font-size:1em;
-color:#fff;
-padding: 8px 20px;
-border:0;
-border-radius:4px;
-background-color:green;
-cursor: pointer;
-text-decoration:none;
-margin:20px auto;
-`
+  display: block;
+  width: 100px;
+  font-size: 1em;
+  color: #fff;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 4px;
+  background-color: green;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 20px auto;
+`;

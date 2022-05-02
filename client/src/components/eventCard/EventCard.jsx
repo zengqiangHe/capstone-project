@@ -10,7 +10,6 @@ const EventCard = ({ title, text, date, time, location, showEditButton, id, dele
   return (
     <Wrapper>
       <EditIcons>
-        {' '}
         {showEditButton && (
           <Link to={`/edit/${id}`}>
             <button type="button">
@@ -29,13 +28,20 @@ const EventCard = ({ title, text, date, time, location, showEditButton, id, dele
           </button>
         )}
       </EditIcons>
-
       <h2>{title}</h2>
       <p>{text}</p>
-      
-      <p><img src={calendar_icon} alt="calendar icon" width="15" />{date}</p>
-      <p><img src={clock_icon} alt="time icon" width="15" />{time}</p>
-      <p><img src={location_icon} alt="location icon" width="15" />{location}</p>
+      <p>
+        <img src={calendar_icon} alt="calendar icon" width="15" />
+        {date}
+      </p>
+      <p>
+        <img src={clock_icon} alt="time icon" width="15" />
+        {time}
+      </p>
+      <p>
+        <img src={location_icon} alt="location icon" width="15" />
+        {location}
+      </p>
     </Wrapper>
   );
 };
@@ -47,8 +53,8 @@ const Wrapper = styled.li`
   height: 22rem;
   gap: 1rem;
   background-color: black;
-  border-radius: 20px;
-  padding: 17px;
+  border-radius: 2rem;
+  padding: 1.5rem;
   margin: 0.5rem;
   &:hover {
     background-color: blue;
@@ -58,7 +64,7 @@ const Wrapper = styled.li`
 const EditIcons = styled.div`
   display: flex;
   justify-content: end;
-  gap:15px;
+  gap: 1rem;
   align-items: center;
   button {
     user-select: none;

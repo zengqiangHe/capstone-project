@@ -38,20 +38,19 @@ const defaultEventsList = [
 
 function App() {
   const navigate = useNavigate();
-const[eventsList, setEventsList] = useState (defaultEventsList)
-  const addNewEvent = (event) => {
-    event.id = Math.random().toString()
-    setEventsList([event, ...eventsList])
-    navigate('/')
-  }
-  
+  const [eventsList, setEventsList] = useState(defaultEventsList);
+  const addNewEvent = event => {
+    event.id = Math.random().toString();
+    setEventsList([event, ...eventsList]);
+    navigate('/');
+  };
 
-  const updateEvent = (data) => {
+  const updateEvent = data => {
     const eventToUpdate = eventsList.findIndex(event => event.id === data.id);
-    eventsList.splice(eventToUpdate, 1, data)
-    setEventsList([ ...eventsList])
-    navigate(-1)
-  }
+    eventsList.splice(eventToUpdate, 1, data);
+    setEventsList([...eventsList]);
+    navigate(-1);
+  };
 
   function deleteEvent(id) {
     setEventsList(eventsList.filter(event => event.id !== id));
@@ -65,15 +64,15 @@ const[eventsList, setEventsList] = useState (defaultEventsList)
           element={
             <ul>
               <HomePageTabs />
-              {eventsList.map(event => (
+              {eventsList.map(eventDetail => (
                 <EventCard
-                  key={event.id}
-                  id={event.id}
-                  title={event.title}
-                  text={event.text}
-                  date={event.date}
-                  time={event.time}
-                  location={event.location}
+                  key={eventDetail.id}
+                  id={eventDetail.id}
+                  title={eventDetail.title}
+                  text={eventDetail.text}
+                  date={eventDetail.date}
+                  time={eventDetail.time}
+                  location={eventDetail.location}
                   showEditButton={false}
                 />
               ))}
@@ -108,7 +107,7 @@ const[eventsList, setEventsList] = useState (defaultEventsList)
           element={<EditEventPage events={eventsList} updateEvent={updateEvent} />}
         />
       </Routes>
-      <Navbar/>
+      <Navbar />
     </Wrapper>
   );
 }
