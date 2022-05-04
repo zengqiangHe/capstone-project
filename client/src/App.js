@@ -47,8 +47,9 @@ function App() {
 
   const updateEvent = data => {
     const eventToUpdate = eventsList.findIndex(event => event.id === data.id);
-    eventsList.splice(eventToUpdate, 1, data);
-    setEventsList([...eventsList]);
+    const newEventsList = [...eventsList];
+    newEventsList[eventToUpdate] = data;
+    setEventsList(newEventsList);
     navigate(-1);
   };
 
