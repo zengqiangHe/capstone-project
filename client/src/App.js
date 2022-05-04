@@ -63,8 +63,9 @@ function App() {
         <Route
           path="/"
           element={
+            <>
+            <HomePageTabs />
             <ul>
-              <HomePageTabs />
               {eventsList.map(eventDetail => (
                 <EventCard
                   key={eventDetail.id}
@@ -78,6 +79,7 @@ function App() {
                 />
               ))}
             </ul>
+            </>
           }
         />
         <Route path="create" element={<Create addNewEvent={addNewEvent} />} />
