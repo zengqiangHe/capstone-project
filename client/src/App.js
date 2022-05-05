@@ -3,7 +3,7 @@ import EventCard from './components/eventCard/EventCard';
 import Header from './components/header/Header';
 import styled from 'styled-components';
 import Create from './pages/Create';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import HomePageTabs from './components/homePageTabs/HomePageTabs';
 import EditEventPage from './pages/EditEventPage';
@@ -39,14 +39,14 @@ const defaultEventsList = [
 function App() {
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState(defaultEventsList);
-  const addNewEvent = event => {
+  const addNewEvent = (event) => {
     event.id = Math.random().toString();
     setEventsList([event, ...eventsList]);
     navigate('/');
   };
 
-  const updateEvent = data => {
-    const eventToUpdate = eventsList.findIndex(event => event.id === data.id);
+  const updateEvent = (data) => {
+    const eventToUpdate = eventsList.findIndex((event) => event.id === data.id);
     const newEventsList = [...eventsList];
     newEventsList[eventToUpdate] = data;
     setEventsList(newEventsList);
@@ -54,8 +54,18 @@ function App() {
   };
 
   function deleteEvent(id) {
-    setEventsList(eventsList.filter(event => event.id !== id));
+    setEventsList(eventsList.filter((event) => event.id !== id));
   }
+
+  const fetchEventDetail = () => {
+    fetch('/api')
+      .then((res) => res.json())
+      .then((data) => setEventsList(data));
+  };
+  useEffect(() => {
+    fetchEventDetail();
+  }, []);
+
   return (
     <Wrapper role="list">
       <Header />
@@ -64,21 +74,21 @@ function App() {
           path="/"
           element={
             <>
-            <HomePageTabs />
-            <ul>
-              {eventsList.map(eventDetail => (
-                <EventCard
-                  key={eventDetail.id}
-                  id={eventDetail.id}
-                  title={eventDetail.title}
-                  text={eventDetail.text}
-                  date={eventDetail.date}
-                  time={eventDetail.time}
-                  location={eventDetail.location}
-                  showEditButton={false}
-                />
-              ))}
-            </ul>
+              <HomePageTabs />
+              <ul>
+                {eventsList.map((eventDetail) => (
+                  <EventCard
+                    key={eventDetail.id}
+                    id={eventDetail.id}
+                    title={eventDetail.title}
+                    text={eventDetail.text}
+                    date={eventDetail.date}
+                    time={eventDetail.time}
+                    location={eventDetail.location}
+                    showEditButton={false}
+                  />
+                ))}
+              </ul>
             </>
           }
         />
@@ -89,7 +99,7 @@ function App() {
           element={
             <ul>
               <HomePageTabs />
-              {eventsList.map(event => (
+              {eventsList.map((event) => (
                 <EventCard
                   key={event.id}
                   id={event.id}
