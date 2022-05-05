@@ -11,7 +11,7 @@ const BockWurstSchema = mongoose.Schema({
   location: { type: String, required: true },
 });
 
-const BockWurst = mongoose.model('BockWurst', BockWurstSchema);
+const BockWurst = mongoose.model('bockwursts', BockWurstSchema);
 
 const { MONGODB_URL } = process.env;
 mongoose.connect(MONGODB_URL).then(() => {

@@ -38,7 +38,7 @@ const defaultEventsList = [
 
 function App() {
   const navigate = useNavigate();
-  const [eventsList, setEventsList] = useState(defaultEventsList);
+  const [eventsList, setEventsList] = useState([]);
   const addNewEvent = (event) => {
     event.id = Math.random().toString();
     setEventsList([event, ...eventsList]);
@@ -76,17 +76,8 @@ function App() {
             <>
               <HomePageTabs />
               <ul>
-                {eventsList.map((eventDetail) => (
-                  <EventCard
-                    key={eventDetail.id}
-                    id={eventDetail.id}
-                    title={eventDetail.title}
-                    text={eventDetail.text}
-                    date={eventDetail.date}
-                    time={eventDetail.time}
-                    location={eventDetail.location}
-                    showEditButton={false}
-                  />
+                {eventsList.map((eventDetail, index) => (
+                  <EventCard key={index} showEditButton={false} eventDetail={eventDetail} />
                 ))}
               </ul>
             </>
@@ -97,27 +88,29 @@ function App() {
         <Route
           path="erstellte-events"
           element={
-            <ul>
+            <>
               <HomePageTabs />
-              {eventsList.map((event) => (
-                <EventCard
-                  key={event.id}
-                  id={event.id}
-                  title={event.title}
-                  text={event.text}
-                  date={event.date}
-                  time={event.time}
-                  location={event.location}
-                  showEditButton={true}
-                  deleteEvent={deleteEvent}
-                />
-              ))}
-            </ul>
+              <ul>
+                {eventsList.map((event, index) => (
+                  <EventCard
+                    key={index}
+                    id={event.id}
+                    title={event.title}
+                    text={event.text}
+                    date={event.date}
+                    time={event.time}
+                    location={event.location}
+                    showEditButton={true}
+                    deleteEvent={deleteEvent}
+                  />
+                ))}
+              </ul>
+            </>
           }
         />
         <Route
           path="edit/:id"
-          element={<EditEventPage events={eventsList} updateEvent={updateEvent} />}
+          element={<EditEventPage events={eventsList} /*updateEvent={updateEvent}*/ />}
         />
       </Routes>
       <Navbar />
