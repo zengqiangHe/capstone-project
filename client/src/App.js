@@ -31,7 +31,7 @@ function App() {
   }
 
   const fetchEventDetail = () => {
-    fetch('/api')
+    fetch('https://bockwurst-app.herokuapp.com/api')
       .then((res) => res.json())
       .then((data) => setEventsList(data));
   };
