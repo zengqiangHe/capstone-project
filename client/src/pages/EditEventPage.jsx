@@ -5,16 +5,16 @@ import { useParams } from 'react-router-dom';
 
 export default function EditEventPage({ events, updateEvent }) {
   const { id } = useParams();
-  const event = events.find(event => event.id === id);
+  const event = events.find((event) => event._id === id);
   const [title, setTitle] = useState(event.title);
   const [text, setText] = useState(event.text);
   const [location, setLocation] = useState(event.location);
   const [date, setDate] = useState(event.date);
   const [time, setTime] = useState(event.time);
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    updateEvent({ title, text, date, time, location, id });
+    updateEvent({ title, text, date, time, location, _id: id });
   };
   return (
     <FormWrapper>
@@ -22,19 +22,19 @@ export default function EditEventPage({ events, updateEvent }) {
       <form onSubmit={handleSubmit}>
         <Label>
           <Span>Titel:</Span>
-          <input type="text" onChange={e => setTitle(e.target.value)} value={title} required />
+          <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} required />
         </Label>
 
         <Label>
           <Span>Beschreibung:</Span>
-          <textarea onChange={e => setText(e.target.value)} value={text} required />
+          <textarea onChange={(e) => setText(e.target.value)} value={text} required />
         </Label>
 
         <Label>
           <Span>Ort:</Span>
           <input
             type="text"
-            onChange={e => setLocation(e.target.value)}
+            onChange={(e) => setLocation(e.target.value)}
             value={location}
             required
           />
@@ -42,12 +42,12 @@ export default function EditEventPage({ events, updateEvent }) {
 
         <Label>
           <Span>Datum:</Span>
-          <input type="date" onChange={e => setDate(e.target.value)} value={date} required />
+          <input type="date" onChange={(e) => setDate(e.target.value)} value={date} required />
         </Label>
 
         <Label>
           <Span>Zeit:</Span>
-          <input type="time" onChange={e => setTime(e.target.value)} value={time} required />
+          <input type="time" onChange={(e) => setTime(e.target.value)} value={time} required />
         </Label>
 
         <Button>Erstellen</Button>
