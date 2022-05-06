@@ -9,33 +9,6 @@ import HomePageTabs from './components/homePageTabs/HomePageTabs';
 import EditEventPage from './pages/EditEventPage';
 import Navbar from './components/navbar/Navbar';
 
-// const defaultEventsList = [
-//   {
-//     id: '1',
-//     title: 'Dumplings Party',
-//     text: 'Wollen wir mal wieder zusammen Dumplings bei mir Zuhause machen?',
-//     date: '13-06-2022',
-//     time: '17:30',
-//     location: 'Harvestehude, Hamburg',
-//   },
-//   {
-//     id: '2',
-//     title: 'Restaurant Besuch bei Akari',
-//     text: 'Habt Ihr Bock auf leckeres japanisches Essen?',
-//     date: '13-06-2022',
-//     time: '18:30',
-//     location: 'Papenhuder Str. 67, Hamburg',
-//   },
-//   {
-//     id: '3',
-//     title: 'After Work Run an der Alster',
-//     text: 'Am Dienstag haben wir endlich gutes Wetter in Hamburg! Wollen wir nach der Arbeit zusammen Joggen gehen?',
-//     date: '13-06-2022',
-//     time: '19:00',
-//     location: 'An der Alster, Hamburg',
-//   },
-// ];
-
 function App() {
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);

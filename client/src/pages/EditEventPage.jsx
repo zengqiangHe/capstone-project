@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 export default function EditEventPage({ events, updateEvent }) {
   const { id } = useParams();
   const event = events.find((event) => event._id === id);
-  const [titel, setTitel] = useState(event.titel);
+  const [title, setTitle] = useState(event.title);
   const [text, setText] = useState(event.text);
   const [location, setLocation] = useState(event.location);
   const [date, setDate] = useState(event.date);
@@ -14,7 +14,7 @@ export default function EditEventPage({ events, updateEvent }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateEvent({ titel, text, date, time, location, _id: id });
+    updateEvent({ title, text, date, time, location, _id: id });
   };
   return (
     <FormWrapper>
@@ -22,7 +22,7 @@ export default function EditEventPage({ events, updateEvent }) {
       <form onSubmit={handleSubmit}>
         <Label>
           <Span>Titel:</Span>
-          <input type="text" onChange={(e) => setTitel(e.target.value)} value={titel} required />
+          <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} required />
         </Label>
 
         <Label>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 export default function Create({ addNewEvent }) {
-  const [titel, setTitel] = useState('');
+  const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
@@ -11,7 +11,7 @@ export default function Create({ addNewEvent }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addNewEvent({ titel, text, date, time, location });
+    addNewEvent({ title, text, date, time, location });
   };
   return (
     <FormWrapper>
@@ -21,8 +21,8 @@ export default function Create({ addNewEvent }) {
           <span>Titel:</span>
           <input
             type="text"
-            onChange={(event) => setTitel(event.target.value)}
-            value={titel}
+            onChange={(event) => setTitle(event.target.value)}
+            value={title}
             required
           />
         </Label>

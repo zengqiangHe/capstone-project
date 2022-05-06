@@ -28,16 +28,16 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
           </button>
         )}
       </EditIcons>
-      <h2>{eventDetail.titel}</h2>
+      <h2>{eventDetail.title}</h2>
       <p>{eventDetail.text}</p>
       <p>
         <img src={calendar_icon} alt="calendar icon" width="15" />
         {eventDetail.date}
       </p>
-      <p>
+      <time>
         <img src={clock_icon} alt="time icon" width="15" />
         {eventDetail.time}
-      </p>
+      </time>
       <p>
         <img src={location_icon} alt="location icon" width="15" />
         {eventDetail.location}
