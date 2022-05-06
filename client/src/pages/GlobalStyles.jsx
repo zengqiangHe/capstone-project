@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle `
+export default createGlobalStyle`
 * {
     box-sizing: border-box;
     margin: 0;
@@ -27,4 +27,4 @@ export default createGlobalStyle `
     line-height: 1.2;
     color: var(--white);
   }
-`
+`;

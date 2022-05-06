@@ -14,17 +14,10 @@ const BockWurstSchema = mongoose.Schema({
 const BockWurst = mongoose.model('bockwursts', BockWurstSchema);
 
 const { MONGODB_URL } = process.env;
-mongoose.connect(MONGODB_URL).then(() => {
-  console.log('connected!' + '****** ');
-});
+mongoose.connect(MONGODB_URL).then(() => {});
 
 router.get('/', (req, res, next) => {
   BockWurst.find({}).then((bw) => res.status(200).json(bw));
-  /*res.status(200).json([
-
-    { id: 1, name: 'Mike' },
-    { id: 2, name: 'Carol' },
-  ]);*/
 });
 
 router.get('/:id', (req, res, next) => {

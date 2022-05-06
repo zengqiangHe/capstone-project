@@ -9,32 +9,32 @@ import HomePageTabs from './components/homePageTabs/HomePageTabs';
 import EditEventPage from './pages/EditEventPage';
 import Navbar from './components/navbar/Navbar';
 
-const defaultEventsList = [
-  {
-    id: '1',
-    title: 'Dumplings Party',
-    text: 'Wollen wir mal wieder zusammen Dumplings bei mir Zuhause machen?',
-    date: '13-06-2022',
-    time: '17:30',
-    location: 'Harvestehude, Hamburg',
-  },
-  {
-    id: '2',
-    title: 'Restaurant Besuch bei Akari',
-    text: 'Habt Ihr Bock auf leckeres japanisches Essen?',
-    date: '13-06-2022',
-    time: '18:30',
-    location: 'Papenhuder Str. 67, Hamburg',
-  },
-  {
-    id: '3',
-    title: 'After Work Run an der Alster',
-    text: 'Am Dienstag haben wir endlich gutes Wetter in Hamburg! Wollen wir nach der Arbeit zusammen Joggen gehen?',
-    date: '13-06-2022',
-    time: '19:00',
-    location: 'An der Alster, Hamburg',
-  },
-];
+// const defaultEventsList = [
+//   {
+//     id: '1',
+//     title: 'Dumplings Party',
+//     text: 'Wollen wir mal wieder zusammen Dumplings bei mir Zuhause machen?',
+//     date: '13-06-2022',
+//     time: '17:30',
+//     location: 'Harvestehude, Hamburg',
+//   },
+//   {
+//     id: '2',
+//     title: 'Restaurant Besuch bei Akari',
+//     text: 'Habt Ihr Bock auf leckeres japanisches Essen?',
+//     date: '13-06-2022',
+//     time: '18:30',
+//     location: 'Papenhuder Str. 67, Hamburg',
+//   },
+//   {
+//     id: '3',
+//     title: 'After Work Run an der Alster',
+//     text: 'Am Dienstag haben wir endlich gutes Wetter in Hamburg! Wollen wir nach der Arbeit zusammen Joggen gehen?',
+//     date: '13-06-2022',
+//     time: '19:00',
+//     location: 'An der Alster, Hamburg',
+//   },
+// ];
 
 function App() {
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ function App() {
   };
 
   const updateEvent = (data) => {
-    const eventToUpdate = eventsList.findIndex((event) => event.id === data.id);
+    const eventToUpdate = eventsList.findIndex((event) => event._id === data._id);
     const newEventsList = [...eventsList];
     newEventsList[eventToUpdate] = data;
     setEventsList(newEventsList);
@@ -54,7 +54,7 @@ function App() {
   };
 
   function deleteEvent(id) {
-    setEventsList(eventsList.filter((event) => event.id !== id));
+    setEventsList(eventsList.filter((event) => event._id !== id));
   }
 
   const fetchEventDetail = () => {
@@ -91,15 +91,10 @@ function App() {
             <>
               <HomePageTabs />
               <ul>
-                {eventsList.map((event, index) => (
+                {eventsList.map((eventDetail, index) => (
                   <EventCard
                     key={index}
-                    id={event.id}
-                    title={event.title}
-                    text={event.text}
-                    date={event.date}
-                    time={event.time}
-                    location={event.location}
+                    eventDetail={eventDetail}
                     showEditButton={true}
                     deleteEvent={deleteEvent}
                   />
@@ -110,7 +105,7 @@ function App() {
         />
         <Route
           path="edit/:id"
-          element={<EditEventPage events={eventsList} /*updateEvent={updateEvent}*/ />}
+          element={<EditEventPage events={eventsList} updateEvent={updateEvent} />}
         />
       </Routes>
       <Navbar />

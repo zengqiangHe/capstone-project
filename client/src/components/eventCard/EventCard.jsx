@@ -6,12 +6,12 @@ import location_icon from '../../assets/location_icon.png';
 import clock_icon from '../../assets/clock_icon.png';
 import calendar_icon from '../../assets/calendar_icon.png';
 
-const EventCard = ({showEditButton,eventDetail, deleteEvent }) => {
+const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
   return (
     <Wrapper>
       <EditIcons>
         {showEditButton && (
-          <Link to={`/edit/${eventDetail.id}`}>
+          <Link to={`/edit/${eventDetail._id}`}>
             <button type="button">
               <img src={edit_icon} alt="edit icon" width="25" />
             </button>
@@ -21,7 +21,7 @@ const EventCard = ({showEditButton,eventDetail, deleteEvent }) => {
           <button
             type="button"
             onClick={() => {
-              deleteEvent(eventDetail.id);
+              deleteEvent(eventDetail._id);
             }}
           >
             <img src={delete_icon} alt="delete icon" width="25" />

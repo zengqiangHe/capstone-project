@@ -3,15 +3,15 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 export default function Create({ addNewEvent }) {
-  const [title, setTitle] = useState('');
+  const [titel, setTitel] = useState('');
   const [text, setText] = useState('');
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    addNewEvent({ title, text, date, time, location });
+    addNewEvent({ titel, text, date, time, location });
   };
   return (
     <FormWrapper>
@@ -21,22 +21,22 @@ export default function Create({ addNewEvent }) {
           <span>Titel:</span>
           <input
             type="text"
-            onChange={event => setTitle(event.target.value)}
-            value={title}
+            onChange={(event) => setTitel(event.target.value)}
+            value={titel}
             required
           />
         </Label>
 
         <Label>
           <span>Beschreibung:</span>
-          <textarea onChange={event => setText(event.target.value)} value={text} required />
+          <textarea onChange={(event) => setText(event.target.value)} value={text} required />
         </Label>
 
         <Label>
           <Span>Ort:</Span>
           <input
             type="text"
-            onChange={event => setLocation(event.target.value)}
+            onChange={(event) => setLocation(event.target.value)}
             value={location}
             required
           />
@@ -46,7 +46,7 @@ export default function Create({ addNewEvent }) {
           <Span>Datum:</Span>
           <input
             type="date"
-            onChange={event => setDate(event.target.value)}
+            onChange={(event) => setDate(event.target.value)}
             value={date}
             required
           />
@@ -56,7 +56,7 @@ export default function Create({ addNewEvent }) {
           <Span>Zeit:</Span>
           <input
             type="time"
-            onChange={event => setTime(event.target.value)}
+            onChange={(event) => setTime(event.target.value)}
             value={time}
             required
           />
