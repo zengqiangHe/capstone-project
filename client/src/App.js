@@ -38,10 +38,8 @@ function App() {
     })
       .then((response) => response.json())
       .then((res) => {
-        setEventsList([event, ...eventsList]);
+        setEventsList([res, ...eventsList]);
         navigate('/');
-        console.log('saved new event');
-        console.log(res);
       })
       .catch((error) => {
         console.log('fail to add new events');
@@ -62,7 +60,7 @@ function App() {
   }
 
   const fetchEventDetail = () => {
-    fetch('http://127.0.0.1:3001/api')
+    fetch('https://bockwurst-app.herokuapp.com/api')
       .then((res) => res.json())
       .then((data) => {
         setEventsList(data);
@@ -79,6 +77,7 @@ function App() {
 
   let content;
 
+  // let content (name === null) ? <NamePrompt addName={addName} /> :
   if (name === null) {
     content = <NamePrompt addName={addName} />;
   } else {
