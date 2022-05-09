@@ -8,6 +8,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import HomePageTabs from './components/homePageTabs/HomePageTabs';
 import EditEventPage from './pages/EditEventPage';
 import Navbar from './components/navbar/Navbar';
+import Voting from './pages/Voting';
 import NamePrompt from './pages/NamePrompt';
 
 function App() {
@@ -38,11 +39,35 @@ function App() {
     })
       .then((response) => response.json())
       .then((res) => {
-        setEventsList([res, ...eventsList]);
+        setEventsList([event, ...eventsList]);
         navigate('/');
+        console.log('saved new event');
+        console.log(res);
       })
       .catch((error) => {
         console.log('fail to add new events');
+        console.log(error);
+      });
+  };
+
+  const setVotingConfirmation = (_id, confirm) => {
+    const postURL = `http://127.0.0.1:3001/api/vote/${_id}`;
+    fetch(postURL, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        isConfirmed: confirm,
+        userName: name,
+      }),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log('fail to add vote');
         console.log(error);
       });
   };
@@ -60,7 +85,7 @@ function App() {
   }
 
   const fetchEventDetail = () => {
-    fetch('https://bockwurst-app.herokuapp.com/api')
+    fetch('http://127.0.0.1:3001/api')
       .then((res) => res.json())
       .then((data) => {
         setEventsList(data);
@@ -77,7 +102,6 @@ function App() {
 
   let content;
 
-  // let content (name === null) ? <NamePrompt addName={addName} /> :
   if (name === null) {
     content = <NamePrompt addName={addName} />;
   } else {
@@ -120,6 +144,7 @@ function App() {
           path="edit/:id"
           element={<EditEventPage events={eventsList} updateEvent={updateEvent} />}
         />
+        <Route path="voting/:_id" element={<Voting events={eventsList} setVotingConfirmation={setVotingConfirmation} />} />
       </Routes>
     );
   }
