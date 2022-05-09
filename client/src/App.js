@@ -8,14 +8,45 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import HomePageTabs from './components/homePageTabs/HomePageTabs';
 import EditEventPage from './pages/EditEventPage';
 import Navbar from './components/navbar/Navbar';
+import NamePrompt from './pages/NamePrompt';
 
 function App() {
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);
+  const [name, setName] = useState(localStorage.getItem('name'));
+  const [isEventListInitialized, setIsEventListInitialized] = useState(false);
+  const addName = (name) => {
+    localStorage.setItem('name', name);
+    setName(name);
+  };
   const addNewEvent = (event) => {
     event.id = Math.random().toString();
-    setEventsList([event, ...eventsList]);
-    navigate('/');
+
+    const postURL = 'http://127.0.0.1:3001/api';
+    fetch(postURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: event.title,
+        text: event.text,
+        time: event.time,
+        date: event.date,
+        location: event.location,
+      }),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        setEventsList([event, ...eventsList]);
+        navigate('/');
+        console.log('saved new event');
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log('fail to add new events');
+        console.log(error);
+      });
   };
 
   const updateEvent = (data) => {
@@ -31,17 +62,27 @@ function App() {
   }
 
   const fetchEventDetail = () => {
-    fetch('https://bockwurst-app.herokuapp.com/api')
+    fetch('http://127.0.0.1:3001/api')
       .then((res) => res.json())
-      .then((data) => setEventsList(data));
+      .then((data) => {
+        setEventsList(data);
+        setIsEventListInitialized(true);
+      });
   };
   useEffect(() => {
     fetchEventDetail();
   }, []);
 
-  return (
-    <Wrapper role="list">
-      <Header />
+  if (!isEventListInitialized) {
+    return <p>Loading</p>;
+  }
+
+  let content;
+
+  if (name === null) {
+    content = <NamePrompt addName={addName} />;
+  } else {
+    content = (
       <Routes>
         <Route
           path="/"
@@ -81,6 +122,13 @@ function App() {
           element={<EditEventPage events={eventsList} updateEvent={updateEvent} />}
         />
       </Routes>
+    );
+  }
+
+  return (
+    <Wrapper role="list">
+      <Header />
+      {content}
       <Navbar />
     </Wrapper>
   );
