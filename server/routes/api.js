@@ -4,11 +4,19 @@ const router = express.Router();
 import 'dotenv/config';
 
 const BockWurstSchema = mongoose.Schema({
-  titel: { type: String, required: true },
+  title: { type: String, required: true },
   text: { type: String, required: true },
   date: { type: String, required: true },
   time: { type: String, required: true },
   location: { type: String, required: true },
+  votes: {
+    type: [
+      {
+        id: { type: String, required: true },
+        confirm: { type: Boolean, required: true },
+      },
+    ],
+  },
 });
 
 const BockWurst = mongoose.model('bockwursts', BockWurstSchema);
@@ -26,6 +34,24 @@ router.get('/:id', (req, res, next) => {
     id: id,
     name: 'something',
   });
+});
+
+router.post('/', (req, res, next) => {
+  const title = req.body.title;
+  const text = req.body.text;
+  const time = req.body.time;
+  const date = req.body.date;
+  const location = req.body.location;
+
+  const newEvent = BockWurst({ title, text, time, date, location, votes: [] });
+  newEvent
+    .save()
+    .then((data) => {
+      res.status(201).send(data);
+    })
+    .catch((error) => {
+      res.status(400).json({ error: error.message });
+    });
 });
 
 export default router;
