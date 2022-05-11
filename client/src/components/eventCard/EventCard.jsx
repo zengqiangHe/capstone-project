@@ -13,12 +13,12 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
     if (eventDetail.votes.length === 1 || eventDetail.votes.length === 0)
       setConfirmedText('Niemand hat bisher Bock.');
     else if (eventDetail.votes.length === 2)
-      setConfirmedText(eventDetail.votes[1].id + ' hat Bock.');
+      setConfirmedText(eventDetail.votes[1].name + ' hat Bock.');
     else if (eventDetail.votes.length === 3)
-      setConfirmedText(eventDetail.votes[1].id + ' und ein anderer hat Bock.');
+      setConfirmedText(eventDetail.votes[1].name + ' und ein anderer hat Bock.');
     else
       setConfirmedText(
-        eventDetail.votes[1].id + ' ' + (eventDetail.votes.length - 2) + ' andere haben Bock'
+        eventDetail.votes[1].name + ' ' + (eventDetail.votes.length - 2) + ' andere haben Bock'
       );
   }, [eventDetail.votes]);
 

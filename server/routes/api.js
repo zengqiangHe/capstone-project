@@ -62,7 +62,7 @@ router.patch('/vote/:id', (req, res, next) => {
   BockWurst.findById(id)
     .then((data) => {
       const votingEntry = data.votes.find((entry) => userName === entry.id);
-      if (votingEntry === undefined) {
+      if (!votingEntry) {
         data.votes.push({ id: userName, confirm: isConfirmed });
       } else {
         votingEntry.confirm = isConfirmed;

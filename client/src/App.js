@@ -14,7 +14,7 @@ import NamePrompt from './pages/NamePrompt';
 function App() {
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);
-  console.log(eventsList)
+
   const [name, setName] = useState(localStorage.getItem('name'));
   const [isEventListInitialized, setIsEventListInitialized] = useState(false);
   const addName = (name) => {
@@ -42,13 +42,8 @@ function App() {
       .then((res) => {
         setEventsList([res, ...eventsList]);
         navigate('/');
-        console.log('saved new event');
-        console.log(res);
       })
-      .catch((error) => {
-        console.log('fail to add new events');
-        console.log(error);
-      });
+      .catch((error) => {});
   };
 
   const setVotingConfirmation = (_id, confirm) => {
@@ -67,10 +62,7 @@ function App() {
       .then((res) => {
         navigate('/');
       })
-      .catch((error) => {
-        console.log('fail to add vote');
-        console.log(error);
-      });
+      .catch((error) => {});
   };
 
   const updateEvent = (data) => {
@@ -145,7 +137,10 @@ function App() {
           path="edit/:id"
           element={<EditEventPage events={eventsList} updateEvent={updateEvent} />}
         />
-        <Route path="voting/:_id" element={<Voting events={eventsList} setVotingConfirmation={setVotingConfirmation} />} />
+        <Route
+          path="voting/:_id"
+          element={<Voting events={eventsList} setVotingConfirmation={setVotingConfirmation} />}
+        />
       </Routes>
     );
   }

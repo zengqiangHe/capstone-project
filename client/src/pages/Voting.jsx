@@ -8,19 +8,19 @@ import { useParams } from 'react-router-dom';
 export default function Voting({ events, setVotingConfirmation }) {
   const { _id } = useParams();
 
-  const handleOnclickBockButton = (event) => {
+  const handleOnClickBockButton = (event) => {
     event.preventDefault();
     setVotingConfirmation(_id, true);
   };
 
-  const handleOnclickWurstButton = (event) => {
+  const handleOnClickWurstButton = (event) => {
     event.preventDefault();
     setVotingConfirmation(_id, false);
   };
 
   const event = events.find((event) => event._id === _id);
-  if (event === undefined) {
-    return <p>There is no vote.</p>;
+  if (!event) {
+    return <p>Es gibt bisher noch keine BockWurst-Abstimmung.</p>;
   }
 
   return (
@@ -28,27 +28,30 @@ export default function Voting({ events, setVotingConfirmation }) {
       <CardWrapper>
         <h2>{event.title}</h2>
         <p>{event.text}</p>
+
         <p>
           <img src={calendar_icon} alt="calendar icon" width="15" />
           {event.date}
         </p>
+
         <p>
           <img src={clock_icon} alt="time icon" width="15" />
           {event.time}
         </p>
+
         <p>
           <img src={location_icon} alt="location icon" width="15" />
           {event.location}
         </p>
       </CardWrapper>
       <ButtonWrapper>
-        <BockButton onClick={handleOnclickBockButton}>Bock</BockButton>
-        <WurstButton onClick={handleOnclickWurstButton}>Wurst</WurstButton>
+        <BockButton onClick={handleOnClickBockButton}>Bock</BockButton>
+        <WurstButton onClick={handleOnClickWurstButton}>Wurst</WurstButton>
       </ButtonWrapper>
     </>
   );
 }
-const CardWrapper = styled.li`
+const CardWrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,8 +65,11 @@ const CardWrapper = styled.li`
     background-color: pink;
   }
 `;
+// const IconsWrapper = styled.div`
+// display:inline-block
+// `;
 
-const ButtonWrapper = styled.li`
+const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
 `;
