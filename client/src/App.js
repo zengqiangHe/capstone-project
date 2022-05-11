@@ -11,6 +11,8 @@ import Navbar from './components/navbar/Navbar';
 import Voting from './pages/Voting';
 import NamePrompt from './pages/NamePrompt';
 
+const URL = process.env.REACT_APP_URL;
+
 function App() {
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);
@@ -24,7 +26,7 @@ function App() {
   const addNewEvent = (event) => {
     event.id = Math.random().toString();
 
-    const postURL = 'https://bockwurst-app.herokuapp.com/api';
+    const postURL = `${URL}/api`;
     fetch(postURL, {
       method: 'POST',
       headers: {
@@ -47,7 +49,7 @@ function App() {
   };
 
   const setVotingConfirmation = (_id, confirm) => {
-    const postURL = `https://bockwurst-app.herokuapp.com/api/vote/${_id}`;
+    const postURL = `${URL}/api/vote/${_id}`;
     fetch(postURL, {
       method: 'PATCH',
       headers: {
@@ -78,7 +80,7 @@ function App() {
   }
 
   const fetchEventDetail = () => {
-    fetch('https://bockwurst-app.herokuapp.com/api')
+    fetch(`${URL}/api`)
       .then((res) => res.json())
       .then((data) => {
         setEventsList(data);
