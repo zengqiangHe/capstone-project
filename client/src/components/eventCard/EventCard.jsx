@@ -11,7 +11,7 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
   const [confirmedText, setConfirmedText] = useState(' ');
   useEffect(() => {
     if (eventDetail.votes.length === 1 || eventDetail.votes.length === 0)
-      setConfirmedText('Keine Abstimmung.');
+      setConfirmedText('Niemand hat bisher Bock.');
     else if (eventDetail.votes.length === 2)
       setConfirmedText(eventDetail.votes[1].id + ' hat Bock.');
     else if (eventDetail.votes.length === 3)
