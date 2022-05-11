@@ -21,7 +21,6 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
         eventDetail.votes[1].id + ' ' + (eventDetail.votes.length - 2) + ' andere haben Bock'
       );
   }, [eventDetail.votes]);
-  console.log(confirmedText);
 
   return (
     <Wrapper>

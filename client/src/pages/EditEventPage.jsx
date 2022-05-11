@@ -12,9 +12,9 @@ export default function EditEventPage({ events, updateEvent }) {
   const [date, setDate] = useState(event.date);
   const [time, setTime] = useState(event.time);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    updateEvent({ title, text, date, time, location, _id: id });
+  const handleSubmit = (editEvent) => {
+    editEvent.preventDefault();
+    updateEvent({ title, text, date, time, location, _id: id, votes: event.votes });
   };
   return (
     <FormWrapper>
@@ -61,12 +61,12 @@ const FormWrapper = styled.div`
   diplay: block;
   color: darkgreen;
 `;
-const Label = styled.p`
+const Label = styled.label`
   color: red;
   display: block;
   margin: 30px 0 10px;
 `;
-const Span = styled.p`
+const Span = styled.span`
   display: block;
   margin: 30px 0 10px;
 `;

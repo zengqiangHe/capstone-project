@@ -73,13 +73,13 @@ const FormWrapper = styled.div`
   margin: 30px;
   height: 100vh;
 `;
-const Label = styled.p`
+const Label = styled.label`
   color: black;
   display: flex;
   justify-content: center;
   margin: 50px 0 10px;
 `;
-const Span = styled.p`
+const Span = styled.span`
   display: flex;
   margin: 30px 0 10px;
 `;

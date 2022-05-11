@@ -11,7 +11,6 @@ export default function Voting({ events, setVotingConfirmation }) {
   const handleOnclickBockButton = (event) => {
     event.preventDefault();
     setVotingConfirmation(_id, true);
-    console.log("test1")
   };
 
   const handleOnclickWurstButton = (event) => {
@@ -20,10 +19,8 @@ export default function Voting({ events, setVotingConfirmation }) {
   };
 
   const event = events.find((event) => event._id === _id);
-  console.log(events);
-  console.log(_id);
   if (event === undefined) {
-    return <div>There is no vote.</div>;
+    return <p>There is no vote.</p>;
   }
 
   return (

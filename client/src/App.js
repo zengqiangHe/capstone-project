@@ -14,6 +14,7 @@ import NamePrompt from './pages/NamePrompt';
 function App() {
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);
+  console.log(eventsList)
   const [name, setName] = useState(localStorage.getItem('name'));
   const [isEventListInitialized, setIsEventListInitialized] = useState(false);
   const addName = (name) => {
@@ -39,7 +40,7 @@ function App() {
     })
       .then((response) => response.json())
       .then((res) => {
-        setEventsList([event, ...eventsList]);
+        setEventsList([res, ...eventsList]);
         navigate('/');
         console.log('saved new event');
         console.log(res);
