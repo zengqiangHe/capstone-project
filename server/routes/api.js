@@ -54,4 +54,32 @@ router.post('/', (req, res, next) => {
     });
 });
 
+router.patch('/vote/:id', (req, res, next) => {
+  const id = req.params.id;
+  const isConfirmed = req.body.isConfirmed;
+  const userName = req.body.userName;
+
+  BockWurst.findById(id)
+    .then((data) => {
+      const votingEntry = data.votes.find((entry) => userName === entry.id);
+      if (!votingEntry) {
+        data.votes.push({ id: userName, confirm: isConfirmed });
+      } else {
+        votingEntry.confirm = isConfirmed;
+      }
+      data
+        .save()
+        .then((data) => {
+          res.status(201).send(data);
+        })
+        .catch((error) => {
+          res.status(400).json({ error: error.message });
+        });
+    })
+
+    .catch(() => {
+      next();
+    });
+});
+
 export default router;
