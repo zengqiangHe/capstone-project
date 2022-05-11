@@ -47,7 +47,7 @@ function App() {
   };
 
   const setVotingConfirmation = (_id, confirm) => {
-    const postURL = `http://127.0.0.1:3001/api/vote/${_id}`;
+    const postURL = `https://bockwurst-app.herokuapp.com/api/${_id}`;
     fetch(postURL, {
       method: 'PATCH',
       headers: {
@@ -78,7 +78,7 @@ function App() {
   }
 
   const fetchEventDetail = () => {
-    fetch('http://127.0.0.1:3001/api')
+    fetch('https://bockwurst-app.herokuapp.com/api')
       .then((res) => res.json())
       .then((data) => {
         setEventsList(data);
