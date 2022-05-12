@@ -68,7 +68,7 @@ const Wrapper = styled.li`
   justify-content: center;
   height: 22rem;
   gap: 1rem;
-  background-color: #F0A500;
+  background:linear-gradient(45deg, #F05454, #FFD56B);
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 1.5rem;

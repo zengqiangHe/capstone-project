@@ -60,7 +60,7 @@ const CardWrapper = styled.section`
   justify-content: center;
   height: 28rem;
   gap: 2rem;
-  background-color: #ffb72b;
+  background:linear-gradient(45deg, #F05454, #93329E);
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 6rem 1.5rem 1rem;
