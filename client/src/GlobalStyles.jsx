@@ -21,7 +21,7 @@ export default createGlobalStyle`
 
   body {
     min-height: 100vh;
-    background-color: var(--darkgrey);
+    background-color: #333;
     font-family: 'Libre Baskerville', serif, Helvetica, sans-serif;
     font-size: 1rem;
     line-height: 1.2;

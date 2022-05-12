@@ -64,7 +64,7 @@ const CardWrapper = styled.section`
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 6rem 1.5rem 1rem;
-  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
 `;
 // const IconsWrapper = styled.div`
 // display:inline-block
@@ -89,7 +89,7 @@ const BockButton = styled.button`
   &:hover {
     background-color: pink;
   }
-  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
 `;
 const WurstButton = styled.button`
   display: block;
@@ -104,5 +104,5 @@ const WurstButton = styled.button`
   cursor: pointer;
   text-decoration: none;
   margin: 20px auto;
-  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
 `;

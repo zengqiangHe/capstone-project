@@ -21,7 +21,7 @@ export default function Create({ addNewEvent }) {
           <Span>Titel:</Span>
           <Input
             type="text"
-            placeholder='Was ist der Anlass?'
+            placeholder="Was ist der Anlass?"
             onChange={(event) => setTitle(event.target.value)}
             value={title}
             required
@@ -30,14 +30,19 @@ export default function Create({ addNewEvent }) {
 
         <Label>
           <Span>Beschreibung:</Span>
-          <Textarea placeholder='Hier kannst du gerne die Anweisungen oder andere Details hinzufügen.' onChange={(event) => setText(event.target.value)} value={text} required />
+          <Textarea
+            placeholder="Hier kannst du gerne die Anweisungen oder andere Details hinzufügen."
+            onChange={(event) => setText(event.target.value)}
+            value={text}
+            required
+          />
         </Label>
 
         <Label>
           <Span>Ort:</Span>
           <Input
             type="text"
-            placeholder='Wo findet es statt?'
+            placeholder="Wo findet es statt?"
             onChange={(event) => setLocation(event.target.value)}
             value={location}
             required
@@ -71,13 +76,12 @@ export default function Create({ addNewEvent }) {
 }
 const FormWrapper = styled.div`
   display: block;
-  color: black;
+  color: white;
   margin: 100px 20px;
-  padding-bottom:0;
-  
+  padding-bottom: 0;
 `;
 const Label = styled.label`
-  color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -100,18 +104,21 @@ const Button = styled.button`
   cursor: pointer;
   text-decoration: none;
   margin: 30px auto;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
 `;
 const Input = styled.input`
-height:35px;
-text-align:center;
-border-radius:15px;
-border:none;
-box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  height: 35px;
+  text-align: center;
+  border-radius: 15px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 `;
 const Textarea = styled.textarea`
-height:100px;
-border-radius:15px;
-border:none;
-padding:20px;
-box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
-`
+  height: 100px;
+  border-radius: 15px;
+  border: none;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+`;

@@ -57,13 +57,12 @@ export default function EditEventPage({ events, updateEvent }) {
 }
 const FormWrapper = styled.div`
   display: block;
-  color: black;
+  color: white;
   margin: 100px 20px;
-  padding-bottom:0;
-  
+  padding-bottom: 0;
 `;
 const Label = styled.label`
-  color: black;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,17 +85,21 @@ const Button = styled.button`
   cursor: pointer;
   text-decoration: none;
   margin: 30px auto;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
 `;
 const Input = styled.input`
-height:35px;
-text-align:center;
-border-radius:15px;
-border:none;
+  height: 35px;
+  text-align: center;
+  border-radius: 15px;
+  border: none;
+  background-color: white;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
 `;
 const Textarea = styled.textarea`
-height:100px;
-border-radius:15px;
-border:none;
-// text-align:center;
-padding:20px;
-`
+  height: 100px;
+  border-radius: 15px;
+  border: none;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
+`;

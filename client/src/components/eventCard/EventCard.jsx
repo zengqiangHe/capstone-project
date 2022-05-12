@@ -15,7 +15,7 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
     else if (eventDetail.votes.length === 2)
       setConfirmedText(eventDetail.votes[1].name + ' hat Bock.');
     else if (eventDetail.votes.length === 3)
-      setConfirmedText(eventDetail.votes[1].name + ' und ein anderer hat Bock.');
+      setConfirmedText(eventDetail.votes[1].name + ' und ein anderer haben Bock.');
     else
       setConfirmedText(
         eventDetail.votes[1].name + ' ' + (eventDetail.votes.length - 2) + ' andere haben Bock'
@@ -68,14 +68,14 @@ const Wrapper = styled.li`
   justify-content: center;
   height: 22rem;
   gap: 1rem;
-  background-color: #191919;
+  background-color: #F0A500;
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 1.5rem;
   &:hover {
     background-color: blue;
   }
-  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 `;
 
 const EditIcons = styled.div`
