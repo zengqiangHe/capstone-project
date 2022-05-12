@@ -22,17 +22,17 @@ export default function EditEventPage({ events, updateEvent }) {
       <form onSubmit={handleSubmit}>
         <Label>
           <Span>Titel:</Span>
-          <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} required />
+          <Input type="text" onChange={(e) => setTitle(e.target.value)} value={title} required />
         </Label>
 
         <Label>
           <Span>Beschreibung:</Span>
-          <textarea onChange={(e) => setText(e.target.value)} value={text} required />
+          <Textarea onChange={(e) => setText(e.target.value)} value={text} required />
         </Label>
 
         <Label>
           <Span>Ort:</Span>
-          <input
+          <Input
             type="text"
             onChange={(e) => setLocation(e.target.value)}
             value={location}
@@ -42,12 +42,12 @@ export default function EditEventPage({ events, updateEvent }) {
 
         <Label>
           <Span>Datum:</Span>
-          <input type="date" onChange={(e) => setDate(e.target.value)} value={date} required />
+          <Input type="date" onChange={(e) => setDate(e.target.value)} value={date} required />
         </Label>
 
         <Label>
           <Span>Zeit:</Span>
-          <input type="time" onChange={(e) => setTime(e.target.value)} value={time} required />
+          <Input type="time" onChange={(e) => setTime(e.target.value)} value={time} required />
         </Label>
 
         <Button>Erstellen</Button>
@@ -56,30 +56,47 @@ export default function EditEventPage({ events, updateEvent }) {
   );
 }
 const FormWrapper = styled.div`
-  margin: 60 auto;
-  max-width: 480px;
-  diplay: block;
-  color: darkgreen;
+  display: block;
+  color: black;
+  margin: 100px 20px;
+  padding-bottom:0;
+  
 `;
 const Label = styled.label`
-  color: red;
-  display: block;
-  margin: 30px 0 10px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 25px 30px 10px;
+  border-radius: 18px;
 `;
 const Span = styled.span`
-  display: block;
-  margin: 30px 0 10px;
+  display: flex;
+  margin: 0 0 10px;
 `;
 const Button = styled.button`
   display: block;
-  width: 100px;
+  width: 200px;
   font-size: 1em;
   color: #fff;
-  padding: 8px 20px;
+  padding: 15px 15px;
   border: 0;
-  border-radius: 4px;
+  border-radius: 15px;
   background-color: green;
   cursor: pointer;
   text-decoration: none;
-  margin: 20px auto;
+  margin: 30px auto;
 `;
+const Input = styled.input`
+height:35px;
+text-align:center;
+border-radius:15px;
+border:none;
+`;
+const Textarea = styled.textarea`
+height:100px;
+border-radius:15px;
+border:none;
+// text-align:center;
+padding:20px;
+`

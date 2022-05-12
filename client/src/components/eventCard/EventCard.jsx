@@ -68,13 +68,14 @@ const Wrapper = styled.li`
   justify-content: center;
   height: 22rem;
   gap: 1rem;
-  background-color: black;
+  background-color: #191919;
   border-radius: 2rem;
   padding: 1.5rem;
-  margin: 0.5rem;
+  margin: 1.5rem;
   &:hover {
     background-color: blue;
   }
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
 `;
 
 const EditIcons = styled.div`

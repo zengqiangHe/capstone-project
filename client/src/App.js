@@ -10,6 +10,7 @@ import EditEventPage from './pages/EditEventPage';
 import Navbar from './components/navbar/Navbar';
 import Voting from './pages/Voting';
 import NamePrompt from './pages/NamePrompt';
+// import InvitationLink from './pages/InvitationLink';
 
 const URL = process.env.REACT_APP_URL;
 
@@ -143,6 +144,7 @@ function App() {
           path="voting/:_id"
           element={<Voting events={eventsList} setVotingConfirmation={setVotingConfirmation} />}
         />
+        {/* <Route path="invitation_link/" element={<InvitationLink />} /> */}
       </Routes>
     );
   }
@@ -156,7 +158,5 @@ function App() {
   );
 }
 
-const Wrapper = styled.li`
-  padding: 5%;
-`;
+const Wrapper = styled.li``;
 export default App;

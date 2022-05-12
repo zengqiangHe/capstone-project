@@ -18,9 +18,10 @@ export default function Create({ addNewEvent }) {
       <h2>Abstimmung erstellen</h2>
       <form onSubmit={handleSubmit}>
         <Label>
-          <span>Titel:</span>
-          <input
+          <Span>Titel:</Span>
+          <Input
             type="text"
+            placeholder='Was ist der Anlass?'
             onChange={(event) => setTitle(event.target.value)}
             value={title}
             required
@@ -28,14 +29,15 @@ export default function Create({ addNewEvent }) {
         </Label>
 
         <Label>
-          <span>Beschreibung:</span>
-          <textarea onChange={(event) => setText(event.target.value)} value={text} required />
+          <Span>Beschreibung:</Span>
+          <Textarea placeholder='Hier kannst du gerne die Anweisungen oder andere Details hinzufügen.' onChange={(event) => setText(event.target.value)} value={text} required />
         </Label>
 
         <Label>
           <Span>Ort:</Span>
-          <input
+          <Input
             type="text"
+            placeholder='Wo findet es statt?'
             onChange={(event) => setLocation(event.target.value)}
             value={location}
             required
@@ -44,7 +46,7 @@ export default function Create({ addNewEvent }) {
 
         <Label>
           <Span>Datum:</Span>
-          <input
+          <Input
             type="date"
             onChange={(event) => setDate(event.target.value)}
             value={date}
@@ -54,7 +56,7 @@ export default function Create({ addNewEvent }) {
 
         <Label>
           <Span>Zeit:</Span>
-          <input
+          <Input
             type="time"
             onChange={(event) => setTime(event.target.value)}
             value={time}
@@ -70,29 +72,46 @@ export default function Create({ addNewEvent }) {
 const FormWrapper = styled.div`
   display: block;
   color: black;
-  margin: 30px;
-  height: 100vh;
+  margin: 100px 20px;
+  padding-bottom:0;
+  
 `;
 const Label = styled.label`
   color: black;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 50px 0 10px;
+  margin: 25px 30px 10px;
+  border-radius: 18px;
 `;
 const Span = styled.span`
   display: flex;
-  margin: 30px 0 10px;
+  margin: 0 0 10px;
 `;
 const Button = styled.button`
   display: block;
-  width: 100px;
+  width: 200px;
   font-size: 1em;
   color: #fff;
-  padding: 8px 20px;
+  padding: 15px 15px;
   border: 0;
-  border-radius: 20px;
+  border-radius: 15px;
   background-color: green;
   cursor: pointer;
   text-decoration: none;
-  margin: 20px auto;
+  margin: 30px auto;
 `;
+const Input = styled.input`
+height:35px;
+text-align:center;
+border-radius:15px;
+border:none;
+box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+`;
+const Textarea = styled.textarea`
+height:100px;
+border-radius:15px;
+border:none;
+padding:20px;
+box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
+`

@@ -12,8 +12,8 @@ export default function HomePageTabs() {
 }
 const Wrapper = styled.ul`
   display: flex;
-  gap: 20px;
-  padding: 10px;
+  justify-content:space-evenly;
+  
 `;
 const StyledNavLink = styled(NavLink)`
   font-size: 1em;
@@ -24,5 +24,7 @@ const StyledNavLink = styled(NavLink)`
   background-color: black;
   cursor: pointer;
   text-decoration: none;
-  margin: 20px auto;
+  margin-top: 80px;
+  margin-bottom:15px;
+  
 `;

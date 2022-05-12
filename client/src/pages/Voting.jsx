@@ -24,7 +24,7 @@ export default function Voting({ events, setVotingConfirmation }) {
   }
 
   return (
-    <>
+    <Wrapper>
       <CardWrapper>
         <h2>{event.title}</h2>
         <p>{event.text}</p>
@@ -45,25 +45,26 @@ export default function Voting({ events, setVotingConfirmation }) {
         </p>
       </CardWrapper>
       <ButtonWrapper>
-        <BockButton onClick={handleOnClickBockButton}>Bock</BockButton>
-        <WurstButton onClick={handleOnClickWurstButton}>Wurst</WurstButton>
+        <BockButton onClick={handleOnClickBockButton}>BOCK</BockButton>
+        <WurstButton onClick={handleOnClickWurstButton}>WURST</WurstButton>
       </ButtonWrapper>
-    </>
+    </Wrapper>
   );
 }
+const Wrapper = styled.div`
+  height: 100vh;
+`;
 const CardWrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 28rem;
   gap: 2rem;
-  background-color: purple;
+  background-color: #ffb72b;
   border-radius: 2rem;
   padding: 1.5rem;
-  margin: 0.5rem;
-  &:hover {
-    background-color: pink;
-  }
+  margin: 6rem 1.5rem 1rem;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
 `;
 // const IconsWrapper = styled.div`
 // display:inline-block
@@ -71,31 +72,37 @@ const CardWrapper = styled.section`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  align-content: center;
 `;
 const BockButton = styled.button`
-  display: block;
   width: 100px;
   font-size: 1em;
   color: #fff;
-  padding: 8px 20px;
+  width: 120px;
+  height: 50px;
   border: 0;
-  border-radius: 20px;
-  background-color: green;
+  border-radius: 18px;
+  background-color: #019267;
   cursor: pointer;
   text-decoration: none;
   margin: 20px auto;
+  &:hover {
+    background-color: pink;
+  }
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
 `;
 const WurstButton = styled.button`
   display: block;
   width: 100px;
   font-size: 1em;
   color: #fff;
-  padding: 8px 20px;
+  width: 120px;
+  height: 50px;
   border: 0;
-  border-radius: 20px;
-  background-color: red;
+  border-radius: 18px;
+  background-color: #f32424;
   cursor: pointer;
   text-decoration: none;
   margin: 20px auto;
+  box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
 `;
