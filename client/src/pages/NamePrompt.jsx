@@ -16,9 +16,10 @@ export default function NamePrompt({ addName }) {
 
       <form onSubmit={handleSubmit}>
         <Label>
-          <span>Dein Name:</span>
-          <input
+          
+          <Input
             type="text"
+            placeholder='Dein Name'
             onChange={(event) => setName(event.target.value)}
             value={name}
             required
@@ -31,10 +32,11 @@ export default function NamePrompt({ addName }) {
   );
 }
 const FormWrapper = styled.div`
-  display: block;
-  color: black;
-  margin: 30px;
+  display: flex;
+  flex-direction:column;
+  color: #F8F5F1;
   height: 100vh;
+  margin: 200px 40px;
 `;
 const Label = styled.p`
   color: black;
@@ -44,7 +46,7 @@ const Label = styled.p`
 `;
 const Button = styled.button`
   display: block;
-  width: 100px;
+  width: 150px;
   font-size: 1em;
   color: #fff;
   padding: 8px 20px;
@@ -54,4 +56,15 @@ const Button = styled.button`
   cursor: pointer;
   text-decoration: none;
   margin: 20px auto;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
+`;
+const Input = styled.input`
+  height: 60px;
+  width:250px;
+  text-align: center;
+  border-radius: 15px;
+  border: none;
+  margin-bottom:50px;
+  background-color: white;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
 `;

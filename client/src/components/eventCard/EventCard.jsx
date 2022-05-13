@@ -68,13 +68,10 @@ const Wrapper = styled.li`
   justify-content: center;
   height: 22rem;
   gap: 1rem;
-  background:linear-gradient(45deg, #F05454, #FFD56B);
+  background: linear-gradient(45deg, #f05454, #ffd56b);
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 1.5rem;
-  &:hover {
-    background-color: blue;
-  }
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 `;
 
