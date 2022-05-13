@@ -60,7 +60,7 @@ const CardWrapper = styled.section`
   justify-content: center;
   height: 28rem;
   gap: 2rem;
-  background:linear-gradient(45deg, #fc00ff, #00dbde);
+  background: linear-gradient(45deg, #fc00ff, #00dbde);
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 6rem 1.5rem 1rem;
@@ -79,7 +79,7 @@ const BockButton = styled.button`
   height: 50px;
   border: 0;
   border-radius: 18px;
-  background:linear-gradient(45deg, #11998e, #38ef7d);
+  background: linear-gradient(45deg, #11998e, #38ef7d);
   cursor: pointer;
   text-decoration: none;
   margin: 20px auto;
@@ -97,7 +97,7 @@ const WurstButton = styled.button`
   height: 50px;
   border: 0;
   border-radius: 18px;
-  background:linear-gradient(45deg, #ee0979, #ff6a00);
+  background: linear-gradient(45deg, #ee0979, #ff6a00);
   cursor: pointer;
   text-decoration: none;
   margin: 20px auto;
