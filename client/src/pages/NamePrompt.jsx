@@ -47,11 +47,11 @@ const Button = styled.button`
   display: block;
   width: 150px;
   font-size: 1em;
-  color: #fff;
+  color: #EFEFEF;
   padding: 8px 20px;
   border: 0;
   border-radius: 20px;
-  background-color: green;
+  background: linear-gradient(45deg, #348F50, #56B4D3);
   cursor: pointer;
   text-decoration: none;
   margin: 20px auto;
@@ -64,6 +64,6 @@ const Input = styled.input`
   border-radius: 15px;
   border: none;
   margin-bottom: 50px;
-  background-color: white;
+  background: linear-gradient(45deg, #8e9eab, #eef2f3);
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
 `;
