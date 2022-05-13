@@ -90,13 +90,23 @@ router.patch('/edit/:id', (req, res, next) => {
   const date = req.body.date;
   const location = req.body.location;
 
-  BockWurst.findById(id);
-
-  const newEvent = BockWurst({ id, title, text, time, date, location, votes: [] });
-  newEvent
-    .put()
+  BockWurst.findByIdAndUpdate(id, { title, text, time, date, location, votes: [] }, { new: true })
     .then((data) => {
       res.status(201).send(data);
+    })
+    .catch((error) => {
+      res.status(400).json({ error: error.message });
+    });
+});
+
+router.delete('/bockwursts/:id', (req, res, next) => {
+  console.log("test1")
+  const id = req.params.id;
+
+  BockWurst.findByIdAndDelete(id)
+    .then((data) => {
+      console.log(data)
+      res.status(200).send(data);
     })
     .catch((error) => {
       res.status(400).json({ error: error.message });

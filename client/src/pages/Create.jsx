@@ -100,7 +100,7 @@ const Button = styled.button`
   padding: 15px 15px;
   border: 0;
   border-radius: 15px;
-  background-color: green;
+  background: linear-gradient(45deg, #00F260, #4ca2cd);
   cursor: pointer;
   text-decoration: none;
   margin: 30px auto;

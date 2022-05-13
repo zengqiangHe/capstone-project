@@ -16,15 +16,14 @@ const Wrapper = styled.ul`
 `;
 const StyledNavLink = styled(NavLink)`
   font-size: 1em;
-  color: #fff;
+  color: #333;
   padding: 8px 20px;
-  border: 0;
   border-radius: 18px;
-  background: linear-gradient(45deg, #44a08d, #093637);
-  background-color: #00a19d;
+  background-color: #EEEEEE;
+  // background: linear-gradient(45deg, #11998e, #38ef7d);
+ 
   cursor: pointer;
   text-decoration: none;
-  margin-top: 80px;
-  margin-bottom: 15px;
+  margin-top: 75px;
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
 `;

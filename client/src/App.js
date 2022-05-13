@@ -10,6 +10,7 @@ import EditEventPage from './pages/EditEventPage';
 import Navbar from './components/navbar/Navbar';
 import Voting from './pages/Voting';
 import NamePrompt from './pages/NamePrompt';
+import VoteSuccess from './pages/VoteSuccess';
 
 const URL = process.env.REACT_APP_URL;
 
@@ -62,7 +63,7 @@ function App() {
     })
       .then((response) => response.json())
       .then((res) => {
-        navigate('/');
+        navigate('/vote_success');
       })
       .catch((error) => {});
   };
@@ -75,9 +76,11 @@ function App() {
   //   navigate(-1);
   // };
   const updateEvent = (data, id) => {
+
+
     const postURL = `${URL}/api/edit/${id}`;
     fetch(postURL, {
-      method: 'PUT',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -91,13 +94,24 @@ function App() {
     })
       .then((response) => response.json())
       .then((res) => {
-        navigate('/');
-      })
-      .catch((error) => {});
+        
+          fetch('/api')
+            .then(res => res.json())
+            .then(data => { setEventsList(data); navigate('/')});
+          }).catch((error) => {});;
+      
+   
+      
   };
 
-  function deleteEvent(id) {
-    setEventsList(eventsList.filter((event) => event._id !== id));
+  function deleteEvent(_id) {
+    // setEventsList(eventsList.filter((event) => event._id !== id));
+
+    fetch(`/api/bockwursts/${_id}`, { method: 'DELETE' }).then(() => {
+      fetch('/api')
+        .then(res => res.json())
+        .then(data => setEventsList(data));
+      });
   }
 
   const fetchEventDetail = () => {
@@ -163,6 +177,10 @@ function App() {
         <Route
           path="voting/:_id"
           element={<Voting events={eventsList} setVotingConfirmation={setVotingConfirmation} />}
+        />
+        <Route
+          path="vote_success"
+          element={<VoteSuccess/>}
         />
       </Routes>
     );

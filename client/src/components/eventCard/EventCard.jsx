@@ -46,15 +46,15 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
       <h2>{eventDetail.title}</h2>
       <p>{eventDetail.text}</p>
       <p>
-        <img src={calendar_icon} alt="calendar icon" width="15" />
+        <Icon src={calendar_icon} alt="calendar icon"  />
         {eventDetail.date}
       </p>
       <time>
-        <img src={clock_icon} alt="time icon" width="15" />
+        <Icon src={clock_icon} alt="time icon"  />
         {eventDetail.time}
       </time>
       <p>
-        <img src={location_icon} alt="location icon" width="15" />
+        <Icon src={location_icon} alt="location icon" />
         {eventDetail.location}
       </p>
       <p>{confirmedText}</p>
@@ -68,10 +68,11 @@ const Wrapper = styled.li`
   justify-content: center;
   height: 22rem;
   gap: 1rem;
-  background: linear-gradient(45deg, #f05454, #ffd56b);
+  background: linear-gradient(45deg, #C02425, #F0CB35);
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 1.5rem;
+  color: white;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 `;
 
@@ -86,4 +87,8 @@ const EditIcons = styled.div`
     background: none;
   }
 `;
+const Icon =styled.img`
+width:15px;
+margin-right:10px
+`
 export default EventCard;
