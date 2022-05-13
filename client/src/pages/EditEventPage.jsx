@@ -14,7 +14,7 @@ export default function EditEventPage({ events, updateEvent }) {
 
   const handleSubmit = (editEvent) => {
     editEvent.preventDefault();
-    updateEvent({ title, text, date, time, location, _id: id, votes: event.votes },id);
+    updateEvent({ title, text, date, time, location, _id: id, votes: event.votes }, id);
   };
   return (
     <FormWrapper>
@@ -81,7 +81,7 @@ const Button = styled.button`
   padding: 15px 15px;
   border: 0;
   border-radius: 15px;
-  background: linear-gradient(45deg, #00F260, #4ca2cd);
+  background: linear-gradient(45deg, #00f260, #4ca2cd);
   cursor: pointer;
   text-decoration: none;
   margin: 30px auto;

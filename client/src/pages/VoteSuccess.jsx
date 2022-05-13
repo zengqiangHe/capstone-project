@@ -7,7 +7,7 @@ export default function VoteSuccess() {
   return (
     <Wrapper>
       <TextWrapper>
-        <img src={check_icon} alt="check icon" width="100" />
+        <SuccessIcon src={check_icon} alt="check icon" />
         <h2>
           Vielen Dank! <br />
           Deine Abstimmung wurde versendet.
@@ -48,6 +48,9 @@ const HomeLink = styled(NavLink)`
   background-color: green;
   cursor: pointer;
   text-decoration: none;
-  background: linear-gradient(45deg, #00F260, #0575E6);
+  background: linear-gradient(45deg, #1d976c, #93f9b9);
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
+`;
+const SuccessIcon = styled.img`
+  height: 70px;
 `;

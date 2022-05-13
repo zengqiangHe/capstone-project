@@ -47,11 +47,11 @@ const Button = styled.button`
   display: block;
   width: 150px;
   font-size: 1em;
-  color: #EFEFEF;
+  color: #efefef;
   padding: 8px 20px;
   border: 0;
   border-radius: 20px;
-  background: linear-gradient(45deg, #348F50, #56B4D3);
+  background: linear-gradient(45deg, #348f50, #56b4d3);
   cursor: pointer;
   text-decoration: none;
   margin: 20px auto;

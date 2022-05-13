@@ -30,17 +30,17 @@ export default function Voting({ events, setVotingConfirmation }) {
         <p>{event.text}</p>
 
         <p>
-          <img src={calendar_icon} alt="calendar icon" width="15" />
+          <Icon src={calendar_icon} alt="calendar icon" />
           {event.date}
         </p>
 
         <p>
-          <img src={clock_icon} alt="time icon" width="15" />
+          <Icon src={clock_icon} alt="time icon" />
           {event.time}
         </p>
 
         <p>
-          <img src={location_icon} alt="location icon" width="15" />
+          <Icon src={location_icon} alt="location icon" />
           {event.location}
         </p>
       </CardWrapper>
@@ -59,7 +59,8 @@ const CardWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   height: 28rem;
-  gap: 2rem;
+  gap: 1.5rem;
+  line-height: 1.8rem;
   background: linear-gradient(45deg, #fc00ff, #00dbde);
   border-radius: 2rem;
   padding: 1.5rem;
@@ -102,4 +103,8 @@ const WurstButton = styled.button`
   text-decoration: none;
   margin: 20px auto;
   box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
+`;
+const Icon = styled.img`
+  width: 15px;
+  margin-right: 10px;
 `;

@@ -28,7 +28,7 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
         {showEditButton && (
           <Link to={`/edit/${eventDetail._id}`}>
             <button type="button">
-              <img src={edit_icon} alt="edit icon" width="25" />
+              <IconForEdit src={edit_icon} alt="edit icon" />
             </button>
           </Link>
         )}
@@ -39,18 +39,18 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
               deleteEvent(eventDetail._id);
             }}
           >
-            <img src={delete_icon} alt="delete icon" width="25" />
+            <IconForEdit src={delete_icon} alt="delete icon" />
           </button>
         )}
       </EditIcons>
       <h2>{eventDetail.title}</h2>
       <p>{eventDetail.text}</p>
       <p>
-        <Icon src={calendar_icon} alt="calendar icon"  />
+        <Icon src={calendar_icon} alt="calendar icon" />
         {eventDetail.date}
       </p>
       <time>
-        <Icon src={clock_icon} alt="time icon"  />
+        <Icon src={clock_icon} alt="time icon" />
         {eventDetail.time}
       </time>
       <p>
@@ -62,18 +62,19 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
   );
 };
 
-const Wrapper = styled.li`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 22rem;
-  gap: 1rem;
-  background: linear-gradient(45deg, #C02425, #F0CB35);
+  height: 20rem;
+  gap: 0.8rem;
+  background: linear-gradient(45deg, #c02425, #f0cb35);
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 1.5rem;
-  color: white;
+  color: #fef9ef;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+  line-height: 1.5rem;
 `;
 
 const EditIcons = styled.div`
@@ -87,8 +88,12 @@ const EditIcons = styled.div`
     background: none;
   }
 `;
-const Icon =styled.img`
-width:15px;
-margin-right:10px
-`
+const Icon = styled.img`
+  width: 15px;
+  margin-right: 10px;
+`;
+const IconForEdit = styled.img`
+  width: 25px;
+  margin-right: 10px;
+`;
 export default EventCard;
