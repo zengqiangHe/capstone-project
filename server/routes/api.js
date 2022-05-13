@@ -82,4 +82,25 @@ router.patch('/vote/:id', (req, res, next) => {
     });
 });
 
+router.patch('/edit/:id', (req, res, next) => {
+  const id = req.params.id;
+  const title = req.body.title;
+  const text = req.body.text;
+  const time = req.body.time;
+  const date = req.body.date;
+  const location = req.body.location;
+
+  BockWurst.findById(id);
+
+  const newEvent = BockWurst({ id, title, text, time, date, location, votes: [] });
+  newEvent
+    .put()
+    .then((data) => {
+      res.status(201).send(data);
+    })
+    .catch((error) => {
+      res.status(400).json({ error: error.message });
+    });
+});
+
 export default router;

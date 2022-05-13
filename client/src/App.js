@@ -10,7 +10,6 @@ import EditEventPage from './pages/EditEventPage';
 import Navbar from './components/navbar/Navbar';
 import Voting from './pages/Voting';
 import NamePrompt from './pages/NamePrompt';
-// import InvitationLink from './pages/InvitationLink';
 
 const URL = process.env.REACT_APP_URL;
 
@@ -68,12 +67,33 @@ function App() {
       .catch((error) => {});
   };
 
-  const updateEvent = (data) => {
-    const eventToUpdate = eventsList.findIndex((event) => event._id === data._id);
-    const newEventsList = [...eventsList];
-    newEventsList[eventToUpdate] = data;
-    setEventsList(newEventsList);
-    navigate(-1);
+  // const updateEvent = (data) => {
+  //   const eventToUpdate = eventsList.findIndex((event) => event._id === data._id);
+  //   const newEventsList = [...eventsList];
+  //   newEventsList[eventToUpdate] = data;
+  //   setEventsList(newEventsList);
+  //   navigate(-1);
+  // };
+  const updateEvent = (data, id) => {
+    const postURL = `${URL}/api/edit/${id}`;
+    fetch(postURL, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: data.title,
+        text: data.text,
+        time: data.time,
+        date: data.date,
+        location: data.location,
+      }),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        navigate('/');
+      })
+      .catch((error) => {});
   };
 
   function deleteEvent(id) {
@@ -144,7 +164,6 @@ function App() {
           path="voting/:_id"
           element={<Voting events={eventsList} setVotingConfirmation={setVotingConfirmation} />}
         />
-        {/* <Route path="invitation_link/" element={<InvitationLink />} /> */}
       </Routes>
     );
   }

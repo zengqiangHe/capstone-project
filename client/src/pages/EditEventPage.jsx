@@ -14,7 +14,7 @@ export default function EditEventPage({ events, updateEvent }) {
 
   const handleSubmit = (editEvent) => {
     editEvent.preventDefault();
-    updateEvent({ title, text, date, time, location, _id: id, votes: event.votes });
+    updateEvent({ title, text, date, time, location, _id: id, votes: event.votes },id);
   };
   return (
     <FormWrapper>
