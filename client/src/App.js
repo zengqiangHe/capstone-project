@@ -11,21 +11,27 @@ import Navbar from './components/navbar/Navbar';
 import Voting from './pages/Voting';
 import NamePrompt from './pages/NamePrompt';
 import VoteSuccess from './pages/VoteSuccess';
+import InvitationLink from './pages/InvitationLink';
 
 const URL = process.env.REACT_APP_URL;
 
 function App() {
+  let voteURL = ' ';
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);
-
+  const [currentEventId, setCurrentEventId] = useState(-1);
   const [name, setName] = useState(localStorage.getItem('name'));
   const [isEventListInitialized, setIsEventListInitialized] = useState(false);
+
   const addName = (name) => {
     localStorage.setItem('name', name);
     setName(name);
   };
+
   const addNewEvent = (event) => {
     event.id = Math.random().toString();
+    voteURL = `${URL}/api/vote/${event.id}`;
+    setCurrentEventId(event.id);
 
     const postURL = `${URL}/api`;
     fetch(postURL, {
@@ -39,12 +45,14 @@ function App() {
         time: event.time,
         date: event.date,
         location: event.location,
+        url: voteURL,
       }),
     })
       .then((response) => response.json())
       .then((res) => {
+        console.log(res);
         setEventsList([res, ...eventsList]);
-        navigate('/');
+        navigate('/invitation_link', { state: { id: res._id } });
       })
       .catch((error) => {});
   };
@@ -68,16 +76,7 @@ function App() {
       .catch((error) => {});
   };
 
-  // const updateEvent = (data) => {
-  //   const eventToUpdate = eventsList.findIndex((event) => event._id === data._id);
-  //   const newEventsList = [...eventsList];
-  //   newEventsList[eventToUpdate] = data;
-  //   setEventsList(newEventsList);
-  //   navigate(-1);
-  // };
   const updateEvent = (data, id) => {
-
-
     const postURL = `${URL}/api/edit/${id}`;
     fetch(postURL, {
       method: 'PATCH',
@@ -94,24 +93,22 @@ function App() {
     })
       .then((response) => response.json())
       .then((res) => {
-        
-          fetch('/api')
-            .then(res => res.json())
-            .then(data => { setEventsList(data); navigate('/')});
-          }).catch((error) => {});;
-      
-   
-      
+        fetch('/api')
+          .then((res) => res.json())
+          .then((data) => {
+            setEventsList(data);
+            navigate('/');
+          });
+      })
+      .catch((error) => {});
   };
 
   function deleteEvent(_id) {
-    // setEventsList(eventsList.filter((event) => event._id !== id));
-
     fetch(`/api/bockwursts/${_id}`, { method: 'DELETE' }).then(() => {
       fetch('/api')
-        .then(res => res.json())
-        .then(data => setEventsList(data));
-      });
+        .then((res) => res.json())
+        .then((data) => setEventsList(data));
+    });
   }
 
   const fetchEventDetail = () => {
@@ -178,10 +175,8 @@ function App() {
           path="voting/:_id"
           element={<Voting events={eventsList} setVotingConfirmation={setVotingConfirmation} />}
         />
-        <Route
-          path="vote_success"
-          element={<VoteSuccess/>}
-        />
+        <Route path="vote_success" element={<VoteSuccess />} />
+        <Route path="invitation_link" element={<InvitationLink eventDetail={currentEventId} />} />
       </Routes>
     );
   }
@@ -189,6 +184,7 @@ function App() {
   return (
     <Wrapper role="list">
       <Header />
+
       {content}
       <Navbar />
     </Wrapper>
@@ -196,4 +192,5 @@ function App() {
 }
 
 const Wrapper = styled.li``;
+
 export default App;

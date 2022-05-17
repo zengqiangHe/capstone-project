@@ -9,10 +9,11 @@ const BockWurstSchema = mongoose.Schema({
   date: { type: String, required: true },
   time: { type: String, required: true },
   location: { type: String, required: true },
+  url:{ type: String, required: false},
   votes: {
     type: [
       {
-        id: { type: String, required: true },
+        name: { type: String, required: true },
         confirm: { type: Boolean, required: true },
       },
     ],
@@ -58,12 +59,12 @@ router.patch('/vote/:id', (req, res, next) => {
   const id = req.params.id;
   const isConfirmed = req.body.isConfirmed;
   const userName = req.body.userName;
-
+console.log(isConfirmed)
   BockWurst.findById(id)
     .then((data) => {
       const votingEntry = data.votes.find((entry) => userName === entry.id);
       if (!votingEntry) {
-        data.votes.push({ id: userName, confirm: isConfirmed });
+        data.votes.push({ name: userName, confirm: isConfirmed });
       } else {
         votingEntry.confirm = isConfirmed;
       }
@@ -100,7 +101,6 @@ router.patch('/edit/:id', (req, res, next) => {
 });
 
 router.delete('/bockwursts/:id', (req, res, next) => {
-  console.log("test1")
   const id = req.params.id;
 
   BockWurst.findByIdAndDelete(id)

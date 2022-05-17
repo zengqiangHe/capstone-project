@@ -52,19 +52,19 @@ export default function Voting({ events, setVotingConfirmation }) {
   );
 }
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 73vh;
 `;
 const CardWrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 28rem;
+  height: 25rem;
   gap: 1.5rem;
   line-height: 1.8rem;
   background: linear-gradient(45deg, #fc00ff, #00dbde);
   border-radius: 2rem;
   padding: 1.5rem;
-  margin: 6rem 1.5rem 1rem;
+  margin: 8rem 1.5rem 1rem;
   box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
 `;
 

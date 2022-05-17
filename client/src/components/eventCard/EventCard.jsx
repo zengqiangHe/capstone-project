@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import edit_icon from '../../assets/edit_icon.png';
 import delete_icon from '../../assets/delete_icon.png';
 import location_icon from '../../assets/location_icon.png';
@@ -10,17 +10,33 @@ import { useState, useEffect } from 'react';
 const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
   const [confirmedText, setConfirmedText] = useState(' ');
   useEffect(() => {
-    if (eventDetail.votes.length === 1 || eventDetail.votes.length === 0)
-      setConfirmedText('Niemand hat bisher Bock.');
-    else if (eventDetail.votes.length === 2)
-      setConfirmedText(eventDetail.votes[1].name + ' hat Bock.');
-    else if (eventDetail.votes.length === 3)
+    let bockCount = 0;
+
+    eventDetail.votes.forEach((vote) => {
+      if (vote.confirm) {
+        bockCount++;
+      }
+    });
+
+    if (bockCount === 0) setConfirmedText('Niemand hat bisher Bock.');
+    else if (bockCount === 1) setConfirmedText(eventDetail.votes[1].name + ' hat Bock.');
+    else if (bockCount === 2)
       setConfirmedText(eventDetail.votes[1].name + ' und ein anderer haben Bock.');
     else
-      setConfirmedText(
-        eventDetail.votes[1].name + ' ' + (eventDetail.votes.length - 2) + ' andere haben Bock'
-      );
+      setConfirmedText(bockCount + ' und ' + (eventDetail.votes.length - 1) + ' andere haben Bock');
   }, [eventDetail.votes]);
+
+  const url = `http://localhost:3000/voting/${eventDetail._id}`;
+
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(url);
+  };
+
+  const navigate = useNavigate();
+
+  const handleChangePage = () => {
+    navigate(`/voting/${eventDetail._id}`);
+  };
 
   return (
     <Wrapper>
@@ -57,7 +73,10 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
         <Icon src={location_icon} alt="location icon" />
         {eventDetail.location}
       </p>
-      <p>{confirmedText}</p>
+
+      <ConfirmedMessage>{confirmedText}</ConfirmedMessage>
+      <ButtonBockWurst onClick={handleChangePage}>zur Abstimmung wechseln</ButtonBockWurst>
+      <Button onClick={handleCopyClick}>Link der Abstimmung kopieren</Button>
     </Wrapper>
   );
 };
@@ -66,15 +85,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 20rem;
-  gap: 0.8rem;
+  height: auto;
+  gap: 0.7rem;
   background: linear-gradient(45deg, #c02425, #f0cb35);
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 1.5rem;
-  color: #fef9ef;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
-  line-height: 1.5rem;
+  line-height: 1.6rem;
 `;
 
 const EditIcons = styled.div`
@@ -95,5 +113,39 @@ const Icon = styled.img`
 const IconForEdit = styled.img`
   width: 25px;
   margin-right: 10px;
+`;
+const ButtonBockWurst = styled.button`
+  display: block;
+  width: 100%;
+  color: white;
+  padding: 15px 15px;
+  border: 0;
+  border-radius: 15px;
+  background: none
+  cursor: pointer;
+  text-decoration: none;
+  background: linear-gradient(45deg, #000046, #1CB5E0);
+`;
+const Button = styled.button`
+  display: block;
+  width: 100%;
+  color: white;
+  padding: 15px 15px;
+  border: 0;
+  border-radius: 15px;
+  background: none
+  cursor: pointer;
+  text-decoration: none;
+  background: linear-gradient(45deg, #44a08d, #134E5E);
+`;
+const ConfirmedMessage = styled.p`
+  display: block;
+  text-align: center;
+  width: auto;
+  color: #333;
+  padding: 15px 15px;
+  border: 0;
+  border-radius: 5px;
+  font-size: 1.1rem;
 `;
 export default EventCard;
