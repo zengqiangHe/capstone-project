@@ -58,7 +58,7 @@ const CardWrapper = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 25rem;
+  height: auto;
   gap: 1.5rem;
   line-height: 1.8rem;
   background: linear-gradient(45deg, #fc00ff, #00dbde);
