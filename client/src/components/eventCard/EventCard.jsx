@@ -6,8 +6,12 @@ import location_icon from '../../assets/location_icon.png';
 import clock_icon from '../../assets/clock_icon.png';
 import calendar_icon from '../../assets/calendar_icon.png';
 import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
+  const notify = () => toast("Wow so easy !");
+
   const [confirmedText, setConfirmedText] = useState(' ');
   useEffect(() => {
     let bockCount = 0;
@@ -28,8 +32,9 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
 
   const url = `http://localhost:3000/voting/${eventDetail._id}`;
 
-  const handleCopyClick = () => {
+  const handleCopyClick = (onClick={notify}) => {
     navigator.clipboard.writeText(url);
+    <ToastContainer />
   };
 
   const navigate = useNavigate();

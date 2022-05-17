@@ -1,8 +1,18 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+// import { useState } from 'react';
+
 
 export default function InvitationLink() {
+//  const [isLinkCopied, setIsLinkCopied] = useState(false);
+
+//   function diplayLinkCopiedMessage(){
+//     setIsLinkCopied(true);
+//     setTimeout(()=>setIsLinkCopied(false), 1000);
+//   }
+
+
   const location = useLocation();
   const url = `http://localhost:3000/voting/${location.state.id}`;
   return (
@@ -15,6 +25,7 @@ export default function InvitationLink() {
       </InvitationText>
       <LinkBox>{url}</LinkBox>
       <Button onClick={() => navigator.clipboard.writeText(url)}>Link koppieren</Button>
+      {/* {isLinkCopied ? <StyledMessage>Link kopiert!</StyledMessage> : ''} */}
     </Wrapper>
   );
 }
@@ -55,4 +66,15 @@ const Button = styled.button`
   text-decoration: none;
   margin: 0 auto;
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
+`;
+const StyledMessage = styled.p`
+  font-size: 1rem;
+  line-height: 1.5;
+  color: green;
+  text-align: center;
+  background: #cde7b3;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin: 0.5rem 1rem;
+  opacity: 0.75;
 `;

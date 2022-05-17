@@ -20,10 +20,8 @@ const StyledNavLink = styled(NavLink)`
   padding: 8px 20px;
   border-radius: 18px;
   background-color: #eeeeee;
-  // background: linear-gradient(45deg, #11998e, #38ef7d);
-
   cursor: pointer;
   text-decoration: none;
-  margin-top: 75px;
+  margin-top: 90px;
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
 `;
