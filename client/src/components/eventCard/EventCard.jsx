@@ -6,24 +6,16 @@ import location_icon from '../../assets/location_icon.png';
 import clock_icon from '../../assets/clock_icon.png';
 import calendar_icon from '../../assets/calendar_icon.png';
 import { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
-  const notify = () => toast("Wow so easy !");
-
   const [confirmedText, setConfirmedText] = useState(' ');
   useEffect(() => {
-    let bockCount = 0;
-
-    eventDetail.votes.forEach((vote) => {
-      if (vote.confirm) {
-        bockCount++;
-      }
+    const confirmVotes = eventDetail.votes.filter((vote) => {
+      return vote.confirm;
     });
-
+    const bockCount = confirmVotes.length;
     if (bockCount === 0) setConfirmedText('Niemand hat bisher Bock.');
-    else if (bockCount === 1) setConfirmedText(eventDetail.votes[1].name + ' hat Bock.');
+    else if (bockCount === 1) setConfirmedText(eventDetail.votes[0].name + ' hat Bock.');
     else if (bockCount === 2)
       setConfirmedText(eventDetail.votes[1].name + ' und ein anderer haben Bock.');
     else
@@ -32,9 +24,8 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
 
   const url = `http://localhost:3000/voting/${eventDetail._id}`;
 
-  const handleCopyClick = (onClick={notify}) => {
+  const handleCopyClick = () => {
     navigator.clipboard.writeText(url);
-    <ToastContainer />
   };
 
   const navigate = useNavigate();
