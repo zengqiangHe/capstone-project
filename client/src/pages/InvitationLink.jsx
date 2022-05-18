@@ -67,14 +67,14 @@ const Button = styled.button`
   margin: 0 auto;
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
 `;
-const StyledMessage = styled.p`
-  font-size: 1rem;
-  line-height: 1.5;
-  color: green;
-  text-align: center;
-  background: #cde7b3;
-  border-radius: 4px;
-  padding: 1rem 1.5rem;
-  margin: 0.5rem 1rem;
-  opacity: 0.75;
-`;
+// const StyledMessage = styled.p`
+//   font-size: 1rem;
+//   line-height: 1.5;
+//   color: green;
+//   text-align: center;
+//   background: #cde7b3;
+//   border-radius: 4px;
+//   padding: 1rem 1.5rem;
+//   margin: 0.5rem 1rem;
+//   opacity: 0.75;
+// `;
