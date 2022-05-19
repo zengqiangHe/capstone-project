@@ -11,7 +11,7 @@ const Navbar = () => {
         <NavIcons src={home_icon} alt="home icon" />
       </StyledNavLink>
       <StyledNavLink to="create">
-        <NavIcons src={add_icon} alt="edit icon" />
+        <NavIcons src={add_icon} alt="add new event icon" />
       </StyledNavLink>
     </Wrapper>
   );
@@ -22,7 +22,7 @@ const Wrapper = styled.ul`
   justify-content: space-evenly;
   list-style-type: none;
   gap: 1.8rem;
-  background-color: #333;
+  background-color: #191919;
   position: sticky;
   bottom: 0;
   padding: 20px;

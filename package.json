@@ -8,7 +8,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "cd client && npm run build",
     "install:all": "npm install && cd client && npm install && cd ../server && npm install",
-    "heroku-postbuild":"cd server && npm install"
+    "heroku-postbuild": "cd server && npm install"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
   "dependencies": {
     "concurrently": "^7.1.0",
     "dotenv": "^16.0.0",
+    "react-toastify": "^9.0.1",
     "styled-components": "^5.3.5"
   }
 }

@@ -10,8 +10,8 @@ const StyledHeader = styled.h1`
   justify-content: center;
   list-style-type: none;
   gap: 1.8rem;
-  background-color: #333;
-  position: sticky;
+  background-color: #191919;
+  position: fixed;
   top: 0;
   padding: 20px;
   width: 100%;

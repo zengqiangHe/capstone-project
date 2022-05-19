@@ -1,0 +1,11 @@
+GET  http://localhost:3001/api
+
+###
+PATCH http://localhost:3001/api/62722430300d98e045f74074
+Content-Type: application/json
+
+{"title":"Ddason"}
+
+###
+DELETE http://localhost:3001/api/bockwursts/627e64bc6ea61b18ed1836c3
+
