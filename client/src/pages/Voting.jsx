@@ -52,7 +52,7 @@ export default function Voting({ events, setVotingConfirmation }) {
   );
 }
 const Wrapper = styled.div`
-  height: 73vh;
+  height: 78vh;
 `;
 const CardWrapper = styled.section`
   display: flex;
@@ -64,7 +64,7 @@ const CardWrapper = styled.section`
   background: linear-gradient(45deg, #fc00ff, #00dbde);
   border-radius: 2rem;
   padding: 1.5rem;
-  margin: 8rem 1.5rem 1rem;
+  margin: 5rem 1.5rem 1rem;
   box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.38);
 `;
 

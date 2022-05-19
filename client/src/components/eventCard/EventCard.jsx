@@ -24,8 +24,16 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
 
   const url = `http://localhost:3000/voting/${eventDetail._id}`;
 
+  const [isLinkCopied, setIsLinkCopied] = useState(false);
+
+  function diplayLinkCopiedMessage() {
+    setIsLinkCopied(true);
+    setTimeout(() => setIsLinkCopied(false), 1500);
+  }
+
   const handleCopyClick = () => {
     navigator.clipboard.writeText(url);
+    diplayLinkCopiedMessage();
   };
 
   const navigate = useNavigate();
@@ -73,6 +81,7 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
       <ConfirmedMessage>{confirmedText}</ConfirmedMessage>
       <ButtonBockWurst onClick={handleChangePage}>zur Abstimmung wechseln</ButtonBockWurst>
       <Button onClick={handleCopyClick}>Link der Abstimmung kopieren</Button>
+      {isLinkCopied ? <StyledMessage>Link kopiert!</StyledMessage> : ''}
     </Wrapper>
   );
 };
@@ -143,5 +152,14 @@ const ConfirmedMessage = styled.p`
   border: 0;
   border-radius: 5px;
   font-size: 1.1rem;
+`;
+const StyledMessage = styled.p`
+  color: green;
+  text-align: center;
+  background: #cde7b3;
+  padding: 1rem 1.5rem;
+  margin: 0.5rem 1rem;
+  border-radius: 10px;
+  opacity: 0.7;
 `;
 export default EventCard;

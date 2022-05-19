@@ -13,18 +13,9 @@ import NamePrompt from './pages/NamePrompt';
 import VoteSuccess from './pages/VoteSuccess';
 import InvitationLink from './pages/InvitationLink';
 
-
 const URL = process.env.REACT_APP_URL;
 
 function App() {
-
-  // const [isLinkCopied, setIsLinkCopied] = useState(false);
-
-  // function diplayLinkCopiedMessage(){
-  //   setIsLinkCopied(true);
-  //   setTimeout(()=>setIsLinkCopied(false), 1000);
-  // }
-  // const notify = () => toast("Wow so easy !");
   let voteURL = ' ';
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);
@@ -186,8 +177,6 @@ function App() {
         />
         <Route path="vote_success" element={<VoteSuccess />} />
         <Route path="invitation_link" element={<InvitationLink eventDetail={currentEventId} />} />
-        {/* diplayLinkCopiedMessage={diplayLinkCopiedMessage} */}
-        
       </Routes>
     );
   }
@@ -202,6 +191,7 @@ function App() {
   );
 }
 
-const Wrapper = styled.li``;
+const Wrapper = styled.li`
+`;
 
 export default App;

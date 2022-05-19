@@ -18,11 +18,11 @@ export default function VoteSuccess() {
   );
 }
 const Wrapper = styled.div`
-  height: 70vh;
+  height: 80vh;
   text-align: center;
 `;
 const TextWrapper = styled.div`
-  margin: 160px 30px;
+  margin: 100px 30px;
   disply: flex;
   flex-direction: column;
   gap: 20px;
@@ -31,7 +31,7 @@ const TextWrapper = styled.div`
   font-size: 1rem;
   background: linear-gradient(45deg, #24c6dc, #514a9d);
   border-radius: 2rem;
-  padding: 2.5rem;
+  padding: 1.5rem;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
 `;
 const HomeLink = styled(NavLink)`
