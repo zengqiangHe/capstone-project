@@ -16,12 +16,13 @@ import InvitationLink from './pages/InvitationLink';
 const URL = process.env.REACT_APP_URL;
 
 function App() {
-  let voteURL = ' ';
+  
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);
   const [currentEventId, setCurrentEventId] = useState(-1);
   const [name, setName] = useState(localStorage.getItem('name'));
   const [isEventListInitialized, setIsEventListInitialized] = useState(false);
+  const [error, setError] = useState(false);
 
   const addName = (name) => {
     localStorage.setItem('name', name);
@@ -30,7 +31,7 @@ function App() {
 
   const addNewEvent = (event) => {
     event.id = Math.random().toString();
-    voteURL = `${URL}/api/vote/${event.id}`;
+    const voteURL = `${URL}/api/vote/${event.id}`;
     setCurrentEventId(event.id);
 
     const postURL = `${URL}/api`;
@@ -54,7 +55,10 @@ function App() {
         setEventsList([res, ...eventsList]);
         navigate('/invitation_link', { state: { id: res._id } });
       })
-      .catch((error) => {});
+      .catch(error => {
+        setError('Konnte kein Event hinzufügen.');
+
+      });
   };
 
   const setVotingConfirmation = (_id, confirm) => {
@@ -73,7 +77,9 @@ function App() {
       .then((res) => {
         navigate('/vote_success');
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setError('Konnte nicht abstimmen.');
+      });
   };
 
   const updateEvent = (data, id) => {
@@ -100,7 +106,9 @@ function App() {
             navigate('/');
           });
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setError('Konnte nicht updaten.');
+      });
   };
 
   function deleteEvent(_id) {
@@ -182,16 +190,20 @@ function App() {
   }
 
   return (
-    <Wrapper role="list">
+    <>
+    {error && <Error>{error}</Error>}
       <Header />
-
       {content}
       <Navbar />
-    </Wrapper>
+    </>
   );
 }
 
-const Wrapper = styled.li`
-`;
-
 export default App;
+
+const Error = styled.p`
+  background-color: rgb(255, 0, 0, 0.2);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+`;

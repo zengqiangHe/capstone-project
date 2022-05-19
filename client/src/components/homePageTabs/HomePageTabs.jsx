@@ -22,6 +22,6 @@ const StyledNavLink = styled(NavLink)`
   background-color: #eeeeee;
   cursor: pointer;
   text-decoration: none;
-  margin-top: 70px;
+  margin-top: 100px;
   box-shadow: 0px -2px 10px rgba(0, 0, 0, 1);
 `;
