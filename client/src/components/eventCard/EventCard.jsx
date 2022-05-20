@@ -23,7 +23,7 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
       setConfirmedText(bockCount + ' und ' + (eventDetail.votes.length - 1) + ' andere haben Bock');
   }, [eventDetail.votes]);
 
-  const url = `${EVENTURL}/${eventDetail._id}`;
+  const url = `${EVENTURL}/voting/${eventDetail._id}`;
 
   const [isLinkCopied, setIsLinkCopied] = useState(false);
 
