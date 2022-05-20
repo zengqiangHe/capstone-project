@@ -99,7 +99,6 @@ const Wrapper = styled.div`
   margin: 1.5rem;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
   line-height: 1.6rem;
-  
 `;
 
 const EditIcons = styled.div`
