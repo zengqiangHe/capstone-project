@@ -23,7 +23,7 @@ const Wrapper = styled.ul`
   list-style-type: none;
   gap: 1.8rem;
   background-color: #191919;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   padding: 20px;
   width: 100%;

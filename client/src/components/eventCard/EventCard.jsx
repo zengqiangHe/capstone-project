@@ -6,6 +6,7 @@ import location_icon from '../../assets/location_icon.png';
 import clock_icon from '../../assets/clock_icon.png';
 import calendar_icon from '../../assets/calendar_icon.png';
 import { useState, useEffect } from 'react';
+const EVENTURL = process.env.REACT_APP_EVENTURL;
 
 const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
   const [confirmedText, setConfirmedText] = useState(' ');
@@ -22,7 +23,7 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
       setConfirmedText(bockCount + ' und ' + (eventDetail.votes.length - 1) + ' andere haben Bock');
   }, [eventDetail.votes]);
 
-  const url = `http://localhost:3000/voting/${eventDetail._id}`;
+  const url = `${EVENTURL}/voting/${eventDetail._id}`;
 
   const [isLinkCopied, setIsLinkCopied] = useState(false);
 
@@ -98,7 +99,6 @@ const Wrapper = styled.div`
   margin: 1.5rem;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
   line-height: 1.6rem;
-  
 `;
 
 const EditIcons = styled.div`

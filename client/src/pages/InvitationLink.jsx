@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
+const EVENTURL = process.env.REACT_APP_EVENTURL;
 
 export default function InvitationLink() {
   const [isLinkCopied, setIsLinkCopied] = useState(false);
@@ -12,7 +13,7 @@ export default function InvitationLink() {
   }
 
   const location = useLocation();
-  const url = `http://localhost:3000/voting/${location.state.id}`;
+  const url = `${EVENTURL}/voting/${location.state.id}`;
   return (
     <Wrapper>
       <InvitationText>
