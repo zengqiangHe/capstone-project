@@ -99,7 +99,7 @@ function App() {
     })
       .then((response) => response.json())
       .then((res) => {
-        fetch('/api')
+        fetch(`${URL}/api`)
           .then((res) => res.json())
           .then((data) => {
             setEventsList(data);
@@ -112,8 +112,8 @@ function App() {
   };
 
   function deleteEvent(_id) {
-    fetch(`/api/bockwursts/${_id}`, { method: 'DELETE' }).then(() => {
-      fetch('/api')
+    fetch(`${URL}/api/bockwursts/${_id}`, { method: 'DELETE' }).then(() => {
+      fetch(`${URL}/api`)
         .then((res) => res.json())
         .then((data) => setEventsList(data));
     });
