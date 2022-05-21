@@ -79,7 +79,7 @@ const FormWrapper = styled.div`
   color: white;
   margin: 100px 20px;
   padding-bottom: 0;
-  height:110vh;
+  height: 110vh;
 `;
 const Label = styled.label`
   color: white;

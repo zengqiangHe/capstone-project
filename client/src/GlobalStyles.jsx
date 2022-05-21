@@ -20,7 +20,7 @@ export default createGlobalStyle`
   }
 
   body {
-    height: 100%;
+    height: 100vh;
     background-color: #333;
     font-family: 'Libre Baskerville', serif, Helvetica, sans-serif;
     font-size: 1rem;

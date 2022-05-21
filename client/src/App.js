@@ -16,7 +16,6 @@ import InvitationLink from './pages/InvitationLink';
 const URL = process.env.REACT_APP_URL;
 
 function App() {
-  
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);
   const [currentEventId, setCurrentEventId] = useState(-1);
@@ -55,9 +54,8 @@ function App() {
         setEventsList([res, ...eventsList]);
         navigate('/invitation_link', { state: { id: res._id } });
       })
-      .catch(error => {
+      .catch((error) => {
         setError('Konnte kein Event hinzufügen.');
-
       });
   };
 
@@ -191,7 +189,7 @@ function App() {
 
   return (
     <>
-    {error && <Error>{error}</Error>}
+      {error && <Error>{error}</Error>}
       <Header />
       {content}
       <Navbar />

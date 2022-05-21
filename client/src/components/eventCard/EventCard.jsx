@@ -18,8 +18,7 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
     else if (bockCount === 1) setConfirmedText(eventDetail.votes[0].name + ' hat Bock.');
     else if (bockCount === 2)
       setConfirmedText(eventDetail.votes[1].name + ' und ein anderer haben Bock.');
-    else
-      setConfirmedText(bockCount + ' Leute haben Bock');
+    else setConfirmedText(bockCount + ' Leute haben Bock');
   }, [eventDetail.votes]);
 
   const url = `http://localhost:3000/voting/${eventDetail._id}`;
@@ -90,10 +89,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex-schrink:0;
+  flex-schrink: 0;
   height: auto;
   gap: 0.7rem;
-  background: linear-gradient(45deg, #c02425, #f0cb35);
+  background: linear-gradient(45deg, #FF5F6D, #FFC371);
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 3rem 1.5rem 4rem;
