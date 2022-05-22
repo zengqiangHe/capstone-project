@@ -31,7 +31,7 @@ Runs the express server with nodemon and the react app in the development mode.\
 This command should be used during development.\
 
 Open [http://localhost:3000](http://localhost:3000) to view the react app in development mode in your browser.\
-Open [http://localhost:5000](http://localhost:5000) to view the latest build of the react app in your browser.
+Open [http://localhost:3001](http://localhost:3001) to view the latest build of the react app in your browser.
 
 ### `npm run build`
 
