@@ -54,7 +54,7 @@ const LinkBox = styled.div`
   background-color: red;
   margin: 80px 25px 80px;
   width: auto;
-  height:auto;
+  height: auto;
   background: linear-gradient(45deg, #24c6dc, #514a9d);
   border-radius: 2rem;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);

@@ -190,7 +190,7 @@ function App() {
   return (
     <>
       {error && <Error>{error}</Error>}
-      <Header />
+      <Header title="BockWurst"/>
       {content}
       <Navbar />
     </>

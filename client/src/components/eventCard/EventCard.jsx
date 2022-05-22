@@ -92,7 +92,7 @@ const Wrapper = styled.div`
   flex-schrink: 0;
   height: auto;
   gap: 0.7rem;
-  background: linear-gradient(45deg, #ff5f6d, #ffc371);
+  background: linear-gradient(45deg, #c02425, #f0cb35);
   border-radius: 2rem;
   padding: 1.5rem;
   margin: 1.5rem;
