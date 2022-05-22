@@ -15,7 +15,7 @@ In the project directory, you can run:
 
 Runs the express server with nodemon, so the server will restart when you make changes.
 The server serves api routes and the latest build of the react app from the client/build folder.
-Open [http://localhost:5000](http://localhost:5000) to view the latest build of the react app in your browser.
+Open [http://localhost:3001](http://localhost:3001) to view the latest build of the react app in your browser.
 
 ### `npm run client`
 
