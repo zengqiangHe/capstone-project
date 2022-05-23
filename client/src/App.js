@@ -206,8 +206,8 @@ const StyleDiv = styled.div`
   margin-bottom: 100px;
 `;
 const Error = styled.p`
-  background-color: rgb(255, 0, 0, 0.2);
+  background-color: #ff5d5d;
   text-align: center;
   padding: 0.5rem;
-  border-radius: var(--border-radius);
+  border-radius: 0.6rem;
 `;
