@@ -6,7 +6,6 @@ import location_icon from '../../assets/location_icon.png';
 import clock_icon from '../../assets/clock_icon.png';
 import calendar_icon from '../../assets/calendar_icon.png';
 import { useState, useEffect } from 'react';
-const EVENTURL = process.env.REACT_APP_EVENTURL;
 
 const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
   const [confirmedText, setConfirmedText] = useState(' ');
@@ -19,11 +18,10 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
     else if (bockCount === 1) setConfirmedText(eventDetail.votes[0].name + ' hat Bock.');
     else if (bockCount === 2)
       setConfirmedText(eventDetail.votes[1].name + ' und ein anderer haben Bock.');
-    else
-      setConfirmedText(bockCount + ' und ' + (eventDetail.votes.length - 1) + ' andere haben Bock');
+    else setConfirmedText(bockCount + ' Leute haben Bock');
   }, [eventDetail.votes]);
 
-  const url = `http://localhost:3000/voting/${eventDetail._id}`;
+  const url = `${window.location.origin}/voting/${eventDetail._id}`;
 
   const [isLinkCopied, setIsLinkCopied] = useState(false);
 
@@ -91,6 +89,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-schrink: 0;
   height: auto;
   gap: 0.7rem;
   background: linear-gradient(45deg, #c02425, #f0cb35);

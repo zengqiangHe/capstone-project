@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
 
-
 export default function InvitationLink() {
   const [isLinkCopied, setIsLinkCopied] = useState(false);
 
@@ -13,7 +12,7 @@ export default function InvitationLink() {
   }
 
   const location = useLocation();
-  const url = `http://localhost:3000/voting/${location.state.id}`;
+  const url = `${window.location.origin}/voting/${location.state.id}`;
   return (
     <Wrapper>
       <InvitationText>
@@ -40,7 +39,7 @@ const Wrapper = styled.div`
   height: 80vh;
 `;
 const InvitationText = styled.div`
-  margin: 100px 25px 0;
+  margin: 10rem 1.5rem 0;
   line-height: 30px;
   color: #f2f2f2;
   display: flex;
@@ -53,8 +52,9 @@ const LinkBox = styled.div`
   text-align: center;
   padding: 30px;
   background-color: red;
-  margin: 50px 25px 50px;
+  margin: 80px 25px 80px;
   width: auto;
+  height: auto;
   background: linear-gradient(45deg, #24c6dc, #514a9d);
   border-radius: 2rem;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);

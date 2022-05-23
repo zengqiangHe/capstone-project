@@ -22,10 +22,9 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 const TextWrapper = styled.div`
-  margin: 100px 30px;
+  margin: 180px 30px;
   disply: flex;
   flex-direction: column;
-  gap: 20px;
   color: white;
   line-height: 60px;
   font-size: 1rem;
@@ -39,7 +38,7 @@ const HomeLink = styled(NavLink)`
   justify-content: center;
   height: 60px;
   width: 250px;
-  margin-top: 30px;
+  margin: 30px auto;
   font-size: 1em;
   color: #fff;
   text-align: center;

@@ -4,7 +4,7 @@ import Header from './components/header/Header';
 import styled from 'styled-components';
 import Create from './pages/Create';
 import { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import HomePageTabs from './components/homePageTabs/HomePageTabs';
 import EditEventPage from './pages/EditEventPage';
 import Navbar from './components/navbar/Navbar';
@@ -16,13 +16,13 @@ import InvitationLink from './pages/InvitationLink';
 const URL = process.env.REACT_APP_URL;
 
 function App() {
-  
   const navigate = useNavigate();
   const [eventsList, setEventsList] = useState([]);
   const [currentEventId, setCurrentEventId] = useState(-1);
   const [name, setName] = useState(localStorage.getItem('name'));
   const [isEventListInitialized, setIsEventListInitialized] = useState(false);
   const [error, setError] = useState(false);
+  const location = useLocation();
 
   const addName = (name) => {
     localStorage.setItem('name', name);
@@ -55,9 +55,8 @@ function App() {
         setEventsList([res, ...eventsList]);
         navigate('/invitation_link', { state: { id: res._id } });
       })
-      .catch(error => {
+      .catch((error) => {
         setError('Konnte kein Event hinzufügen.');
-
       });
   };
 
@@ -123,13 +122,15 @@ function App() {
     fetch(`${URL}/api`)
       .then((res) => res.json())
       .then((data) => {
-        setEventsList(data);
+        setEventsList(data.reverse());
         setIsEventListInitialized(true);
       });
   };
   useEffect(() => {
-    fetchEventDetail();
-  }, []);
+    if (location.pathname === '/') {
+      fetchEventDetail();
+    }
+  }, [location]);
 
   if (!isEventListInitialized) {
     return <p>Loading</p>;
@@ -147,11 +148,11 @@ function App() {
           element={
             <>
               <HomePageTabs />
-              <ul>
+              <EventCardWrapper>
                 {eventsList.map((eventDetail, index) => (
                   <EventCard key={index} showEditButton={false} eventDetail={eventDetail} />
                 ))}
-              </ul>
+              </EventCardWrapper>
             </>
           }
         />
@@ -162,7 +163,7 @@ function App() {
           element={
             <>
               <HomePageTabs />
-              <ul>
+              <>
                 {eventsList.map((eventDetail, index) => (
                   <EventCard
                     key={index}
@@ -171,7 +172,7 @@ function App() {
                     deleteEvent={deleteEvent}
                   />
                 ))}
-              </ul>
+              </>
             </>
           }
         />
@@ -191,8 +192,8 @@ function App() {
 
   return (
     <>
-    {error && <Error>{error}</Error>}
-      <Header />
+      {error && <Error>{error}</Error>}
+      <Header title="BockWurst" />
       {content}
       <Navbar />
     </>
@@ -201,9 +202,12 @@ function App() {
 
 export default App;
 
+const EventCardWrapper = styled.div`
+  margin-bottom: 100px;
+`;
 const Error = styled.p`
-  background-color: rgb(255, 0, 0, 0.2);
+  background-color: #ff5d5d;
   text-align: center;
   padding: 0.5rem;
-  border-radius: var(--border-radius);
+  border-radius: 0.6rem;
 `;
