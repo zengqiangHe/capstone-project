@@ -28,7 +28,7 @@ export default function InvitationLink() {
           diplayLinkCopiedMessage();
         }}
       >
-        Link koppieren
+        Link kopieren
       </Button>
       {isLinkCopied ? <StyledMessage>Link kopiert!</StyledMessage> : ''}
     </Wrapper>
