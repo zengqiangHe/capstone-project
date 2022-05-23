@@ -48,7 +48,7 @@ const InvitationText = styled.div`
 `;
 const LinkBox = styled.div`
   display: block;
-  font-size: 0.6rem;
+  font-size: 0.4rem;
   text-align: center;
   padding: 30px;
   background-color: red;
