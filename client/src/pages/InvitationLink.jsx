@@ -12,7 +12,7 @@ export default function InvitationLink() {
   }
 
   const location = useLocation();
-  const url = `http://localhost:3000/voting/${location.state.id}`;
+  const url = `${window.location.origin}/voting/${location.state.id}`;
   return (
     <Wrapper>
       <InvitationText>

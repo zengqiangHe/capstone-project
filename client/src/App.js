@@ -145,11 +145,11 @@ function App() {
           element={
             <>
               <HomePageTabs />
-              <ul>
+              <StyleDiv>
                 {eventsList.map((eventDetail, index) => (
                   <EventCard key={index} showEditButton={false} eventDetail={eventDetail} />
                 ))}
-              </ul>
+              </StyleDiv>
             </>
           }
         />
@@ -160,7 +160,7 @@ function App() {
           element={
             <>
               <HomePageTabs />
-              <ul>
+              <>
                 {eventsList.map((eventDetail, index) => (
                   <EventCard
                     key={index}
@@ -169,7 +169,7 @@ function App() {
                     deleteEvent={deleteEvent}
                   />
                 ))}
-              </ul>
+              </>
             </>
           }
         />
@@ -190,7 +190,7 @@ function App() {
   return (
     <>
       {error && <Error>{error}</Error>}
-      <Header title="BockWurst"/>
+      <Header title="BockWurst" />
       {content}
       <Navbar />
     </>
@@ -199,6 +199,9 @@ function App() {
 
 export default App;
 
+const StyleDiv = styled.div`
+  margin-bottom: 100px;
+`;
 const Error = styled.p`
   background-color: rgb(255, 0, 0, 0.2);
   text-align: center;

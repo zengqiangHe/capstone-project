@@ -21,7 +21,7 @@ const EventCard = ({ showEditButton, eventDetail, deleteEvent }) => {
     else setConfirmedText(bockCount + ' Leute haben Bock');
   }, [eventDetail.votes]);
 
-  const url = `http://localhost:3000/voting/${eventDetail._id}`;
+  const url = `${window.location.origin}/voting/${eventDetail._id}`;
 
   const [isLinkCopied, setIsLinkCopied] = useState(false);
 

@@ -34,6 +34,7 @@ const StyledNavLink = styled(NavLink)`
   &.active {
     opacity: 35%;
     cursor: default;
+  }
 `;
 const NavIcons = styled.img`
   width: 40px;
