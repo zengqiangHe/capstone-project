@@ -2,17 +2,10 @@ import Create from './Create';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 
-// const newEventCard = {
-//   titel: 'dim sum brunch',
-//   beschreibung: 'anyone want to have some dim sums on sunday?',
-//   ort: 'near main train station in hamburg ',
-//   datum: '22.06.2022',
-//   zeit:'12:30',
-// };
 
 describe('Create', () => {
   it('renders five input fields and a button', () => {
-    render(<Create />);
+    render(<Create addNewEvent={jest.fn()}/>);
 
     const titleOfNewEventInput = screen.getByLabelText(/titel/i);
     const discriptionOfNewEventTextarea = screen.getByLabelText(/beschreibung/i);
@@ -31,7 +24,7 @@ describe('Create', () => {
 
   it('submits form data when every field is filled out', () => {
     const handleCreate = jest.fn();
-    render(<Create onCreateGame={handleCreate} />);
+    render(<Create addNewEvent={handleCreate}/>);
 
     const titleOfNewEventInput = screen.getByLabelText(/titel/i);
     const discriptionOfNewEventTextarea = screen.getByLabelText(/beschreibung/i);
@@ -58,7 +51,7 @@ describe('Create', () => {
   });
   it('does not submit form if one input field is left empty', () => {
     const handleCreate = jest.fn();
-    render(<Create onCreateEvent={handleCreate} />);
+    render(<Create addNewEvent={handleCreate}/>);
 
     const titleOfNewEventInput = screen.getByLabelText(/titel/i);
     const discriptionOfNewEventTextarea = screen.getByLabelText(/beschreibung/i);

@@ -4,7 +4,7 @@ import Header from './components/header/Header';
 import styled from 'styled-components';
 import Create from './pages/Create';
 import { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import HomePageTabs from './components/homePageTabs/HomePageTabs';
 import EditEventPage from './pages/EditEventPage';
 import Navbar from './components/navbar/Navbar';
@@ -22,6 +22,7 @@ function App() {
   const [name, setName] = useState(localStorage.getItem('name'));
   const [isEventListInitialized, setIsEventListInitialized] = useState(false);
   const [error, setError] = useState(false);
+  const location = useLocation();
 
   const addName = (name) => {
     localStorage.setItem('name', name);
@@ -121,13 +122,17 @@ function App() {
     fetch(`${URL}/api`)
       .then((res) => res.json())
       .then((data) => {
-        setEventsList(data);
+        setEventsList(data.reverse());
         setIsEventListInitialized(true);
       });
   };
   useEffect(() => {
-    fetchEventDetail();
-  }, []);
+    if (location.pathname === '/'){
+      console.log('Hello!');
+      fetchEventDetail();
+    }
+    
+  }, [location]);
 
   if (!isEventListInitialized) {
     return <p>Loading</p>;
