@@ -3,7 +3,7 @@ import HomePageTabs from './HomePageTabs';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('HomePageTabs', () => {
-  it('renders a navigation with one link', () => {
+  it('renders a navigation with two link', () => {
     render(
       <MemoryRouter>
         <HomePageTabs />

@@ -148,11 +148,11 @@ function App() {
           element={
             <>
               <HomePageTabs />
-              <StyleDiv>
+              <EventCardWrapper>
                 {eventsList.map((eventDetail, index) => (
                   <EventCard key={index} showEditButton={false} eventDetail={eventDetail} />
                 ))}
-              </StyleDiv>
+              </EventCardWrapper>
             </>
           }
         />
@@ -202,7 +202,7 @@ function App() {
 
 export default App;
 
-const StyleDiv = styled.div`
+const EventCardWrapper = styled.div`
   margin-bottom: 100px;
 `;
 const Error = styled.p`

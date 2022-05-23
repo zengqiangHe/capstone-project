@@ -48,23 +48,4 @@ describe('Create', () => {
       time: '12:30',
     });
   });
-  it('does not submit form if one input field is left empty', () => {
-    const handleCreate = jest.fn();
-    render(<Create addNewEvent={handleCreate} />);
-
-    const titleOfNewEventInput = screen.getByLabelText(/titel/i);
-    const discriptionOfNewEventTextarea = screen.getByLabelText(/beschreibung/i);
-    const locationOfNewEventInput = screen.getByLabelText(/ort/i);
-    const dateOfNewEventInput = screen.getByLabelText(/datum/i);
-    const timeOfNewEventInput = screen.getByLabelText(/zeit/i);
-    const submitButton = screen.getByRole('button', { name: /erstellen/i });
-
-    userEvent.type(titleOfNewEventInput, ' ');
-    userEvent.type(discriptionOfNewEventTextarea, ' ');
-    userEvent.type(locationOfNewEventInput, ' ');
-    userEvent.type(dateOfNewEventInput, ' ');
-    userEvent.type(timeOfNewEventInput, ' ');
-    userEvent.click(submitButton);
-    expect(handleCreate).not.toHaveBeenCalledTimes(0);
-  });
 });

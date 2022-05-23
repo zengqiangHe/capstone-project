@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Navbar', () => {
-  it('renders a navigation with one link', () => {
+  it('renders a navigation with two link', () => {
     render(
       <MemoryRouter>
         <Navbar />
