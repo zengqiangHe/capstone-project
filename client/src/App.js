@@ -127,11 +127,9 @@ function App() {
       });
   };
   useEffect(() => {
-    if (location.pathname === '/'){
-      console.log('Hello!');
+    if (location.pathname === '/') {
       fetchEventDetail();
     }
-    
   }, [location]);
 
   if (!isEventListInitialized) {

@@ -2,10 +2,9 @@ import Create from './Create';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 
-
 describe('Create', () => {
   it('renders five input fields and a button', () => {
-    render(<Create addNewEvent={jest.fn()}/>);
+    render(<Create addNewEvent={jest.fn()} />);
 
     const titleOfNewEventInput = screen.getByLabelText(/titel/i);
     const discriptionOfNewEventTextarea = screen.getByLabelText(/beschreibung/i);
@@ -24,17 +23,17 @@ describe('Create', () => {
 
   it('submits form data when every field is filled out', () => {
     const handleCreate = jest.fn();
-    render(<Create addNewEvent={handleCreate}/>);
+    render(<Create addNewEvent={handleCreate} />);
 
-    const titleOfNewEventInput= screen.getByLabelText(/titel/i);
-    const discriptionOfNewEventTextarea  = screen.getByLabelText(/beschreibung/i);
+    const titleOfNewEventInput = screen.getByLabelText(/titel/i);
+    const discriptionOfNewEventTextarea = screen.getByLabelText(/beschreibung/i);
     const locationOfNewEventInput = screen.getByLabelText(/ort/i);
     const dateOfNewEventInput = screen.getByLabelText(/datum/i);
     const timeOfNewEventInput = screen.getByLabelText(/zeit/i);
     const submitButton = screen.getByRole('button', { name: /erstellen/i });
 
     userEvent.type(titleOfNewEventInput, 'dim sum brunch');
-    userEvent.type(discriptionOfNewEventTextarea , 'anyone want to have some dim sums on sunday?');
+    userEvent.type(discriptionOfNewEventTextarea, 'anyone want to have some dim sums on sunday?');
     userEvent.type(locationOfNewEventInput, 'near main train station in hamburg.');
     userEvent.type(dateOfNewEventInput, '22.06.2022');
     userEvent.type(timeOfNewEventInput, '12:30');
@@ -51,7 +50,7 @@ describe('Create', () => {
   });
   it('does not submit form if one input field is left empty', () => {
     const handleCreate = jest.fn();
-    render(<Create addNewEvent={handleCreate}/>);
+    render(<Create addNewEvent={handleCreate} />);
 
     const titleOfNewEventInput = screen.getByLabelText(/titel/i);
     const discriptionOfNewEventTextarea = screen.getByLabelText(/beschreibung/i);

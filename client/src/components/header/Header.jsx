@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = ({title}) => {
+const Header = ({ title }) => {
   return <StyledHeader>{title}</StyledHeader>;
 };
 
