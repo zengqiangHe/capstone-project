@@ -46,3 +46,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `npm run install:all`
 
 Installs all dependencies for the root project, the client project and the server project.
+
+### `env`
+
+Set up an .env with the variable "MONGODB_URL" in the server folder with the address to your local mongodb, e.g.: MONGODB_URL="mongodb://localhost:27017/bockwurst"
