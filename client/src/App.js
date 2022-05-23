@@ -163,7 +163,7 @@ function App() {
           element={
             <>
               <HomePageTabs />
-              <>
+              <EventCardWrapper>
                 {eventsList.map((eventDetail, index) => (
                   <EventCard
                     key={index}
@@ -172,7 +172,7 @@ function App() {
                     deleteEvent={deleteEvent}
                   />
                 ))}
-              </>
+              </EventCardWrapper>
             </>
           }
         />
