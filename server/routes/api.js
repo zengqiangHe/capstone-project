@@ -9,7 +9,7 @@ const BockWurstSchema = mongoose.Schema({
   date: { type: String, required: true },
   time: { type: String, required: true },
   location: { type: String, required: true },
-  url:{ type: String, required: false},
+  url: { type: String, required: false },
   votes: {
     type: [
       {
@@ -59,7 +59,7 @@ router.patch('/vote/:id', (req, res, next) => {
   const id = req.params.id;
   const isConfirmed = req.body.isConfirmed;
   const userName = req.body.userName;
-console.log(isConfirmed)
+  console.log(isConfirmed);
   BockWurst.findById(id)
     .then((data) => {
       const votingEntry = data.votes.find((entry) => userName === entry.id);
@@ -105,8 +105,18 @@ router.delete('/bockwursts/:id', (req, res, next) => {
 
   BockWurst.findByIdAndDelete(id)
     .then((data) => {
-      console.log(data)
+      console.log(data);
       res.status(200).send(data);
+    })
+    .catch((error) => {
+      res.status(400).json({ error: error.message });
+    });
+});
+router.get('/voting/:id', (req, res, next) => {
+  const id = req.params.id;
+  BockWurst.findById(id)
+    .then((data) => {
+      res.status(201).send(data);
     })
     .catch((error) => {
       res.status(400).json({ error: error.message });
