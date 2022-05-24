@@ -23,6 +23,7 @@ export default function Voting({ events, setVotingConfirmation, setIsEventListIn
     if (eventsList.length === 0) {
       fetchEventDetail();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleOnClickBockButton = (event) => {
