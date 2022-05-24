@@ -4,9 +4,27 @@ import clock_icon from '../assets/clock_icon.png';
 import calendar_icon from '../assets/calendar_icon.png';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+const URL = process.env.REACT_APP_URL;
 
-export default function Voting({ events, setVotingConfirmation }) {
+export default function Voting({ events, setVotingConfirmation, setIsEventListInitialized }) {
   const { _id } = useParams();
+  const [eventsList, setEventsList] = useState(events);
+
+  const fetchEventDetail = () => {
+    fetch(`${URL}/api/voting/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setEventsList([data]);
+        setIsEventListInitialized(true);
+      });
+  };
+  useEffect(() => {
+    if (eventsList.length === 0) {
+      fetchEventDetail();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleOnClickBockButton = (event) => {
     event.preventDefault();
@@ -18,14 +36,14 @@ export default function Voting({ events, setVotingConfirmation }) {
     setVotingConfirmation(_id, false);
   };
 
-  const event = events.find((event) => event._id === _id);
+  const event = eventsList.find((event) => event._id === _id);
   if (!event) {
     return <p>Es gibt bisher noch keine BockWurst-Abstimmung.</p>;
   }
 
   return (
     <Wrapper>
-      <CardWrapper>
+      <CardWrapper events={eventsList}>
         <h2>{event.title}</h2>
         <p>{event.text}</p>
 

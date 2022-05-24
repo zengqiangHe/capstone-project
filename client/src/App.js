@@ -127,9 +127,9 @@ function App() {
       });
   };
   useEffect(() => {
-    if (location.pathname === '/') {
+    
       fetchEventDetail();
-    }
+    
   }, [location]);
 
   if (!isEventListInitialized) {
@@ -182,7 +182,7 @@ function App() {
         />
         <Route
           path="voting/:_id"
-          element={<Voting events={eventsList} setVotingConfirmation={setVotingConfirmation} />}
+          element={<Voting events={eventsList} setVotingConfirmation={setVotingConfirmation} setIsEventListInitialized={setIsEventListInitialized}/>}
         />
         <Route path="vote_success" element={<VoteSuccess />} />
         <Route path="invitation_link" element={<InvitationLink eventDetail={currentEventId} />} />
