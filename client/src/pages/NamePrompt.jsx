@@ -12,7 +12,7 @@ export default function NamePrompt({ addName }) {
 
   return (
     <FormWrapper>
-      <h2>Gib bitte dein Name ein</h2>
+      <h2>Gib bitte deinen Namen ein</h2>
 
       <form onSubmit={handleSubmit}>
         <Label>
